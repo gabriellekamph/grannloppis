@@ -1,6 +1,6 @@
-## :rotating_light: Stay tuned for more info about this project! 
+# Stay tuned for more info about this project :rotating_light: 
 
-## Getting Started
+** Getting Started ** 
 
 First, run the development server:
 
