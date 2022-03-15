@@ -1,0 +1,20 @@
+[
+  {
+    "address": "Pärlröksgången 129",
+    "longitude": "18.255076969461385",
+    "latitude": "59.22964095891195",
+    "categories": "barnkläder, damkläder, leksaker"
+},
+{
+  "address": "Krusboda Torg 1",
+  "longitude": "18.25347837355799",
+  "latitude": "59.23026119395223",
+  "categories": "inredning, böcker, trädgårdsredskap"
+},
+{
+  "address": "Pärlröksgången 73",
+  "longitude": "18.25667556644108",
+  "latitude": "59.23027217146374",
+  "categories": "damkläder, herrkläder, barnkläder"
+}
+]
