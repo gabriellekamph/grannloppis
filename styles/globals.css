@@ -16,6 +16,7 @@ a {
 
 a:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 * {
@@ -26,6 +27,7 @@ a:hover {
   body {
     background-color: theme('colors.raspberry');
     color: theme('colors.white');
+    font-size: small;
   }
 }
 
