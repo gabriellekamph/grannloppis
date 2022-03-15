@@ -1,10 +1,10 @@
-import Link from "next/link";
-import { Menu, Transition } from "@headlessui/react";
-import { Fragment } from "react";
-import { ChevronDownIcon } from "@heroicons/react/solid";
+import Link from "next/link"
+import { Menu, Transition } from "@headlessui/react"
+import { Fragment } from "react"
+import { ArrowNarrowDownIcon } from "@heroicons/react/solid"
 
 function MyLink(props: any) {
-  let { href, children, ...rest } = props;
+  let { href, children, ...rest } = props
   return (
     <Link href={href}>
       <a {...rest}>{children}</a>
@@ -17,10 +17,10 @@ const DropDown = () => {
     <div className="flex justify-center">
       <Menu as="div" className="relative inline-block text-center max-w-xs">
         <div>
-          <Menu.Button className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-transparent text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-            <p className="text-lg text-center">Välj loppis att delta på</p>
-            <ChevronDownIcon
-              className="-mr-1 ml-2 h-5 w-5"
+          <Menu.Button className="inline-flex justify-center w-full rounded-md border px-4 py-2 bg-transparent text-sm font-small focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+            <p className="text-md text-center">Välj loppis att delta på</p>
+            <ArrowNarrowDownIcon
+              className="-mr-1 ml-2 h-5 w-4"
               aria-hidden="true"
             />
           </Menu.Button>
@@ -35,15 +35,18 @@ const DropDown = () => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="origin-top-right absolute right-0 mt-2 w-full bg-white text-raspberry rounded-md bg-transparent ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="origin-top-right absolute right-0 mt-2 w-full bg-white text-raspberry rounded-lg bg-transparent flex flex-wrap flex-col">
             <Menu.Item>
-              <MyLink href="/Krusboda">Krusboda</MyLink>
+              <MyLink href="/krusboda">Krusboda</MyLink>
+            </Menu.Item>
+            <Menu.Item>
+              <MyLink href="/öringe">Öringe</MyLink>
             </Menu.Item>
           </Menu.Items>
         </Transition>
       </Menu>
     </div>
-  );
-};
+  )
+}
 
-export default DropDown;
+export default DropDown
