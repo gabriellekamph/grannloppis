@@ -1,7 +1,12 @@
 {
     "cSpell.ignoreWords": [
+        "control",
+        "geolocate",
         "grannloppis",
         "logo",
+        "mapbox",
+        "mapboxgl",
+        "token",
         "white"
     ]
 }
