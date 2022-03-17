@@ -15,7 +15,7 @@ function Pin({size = 30, onClick}: {size?: number; onClick?: () => void}) {
     <svg height={size} viewBox="0 0 24 24" style={pinStyle} onClick={onClick}>
       <path d={ICON} />
     </svg>
-  );
+  )
 }
 
 export default React.memo(Pin)

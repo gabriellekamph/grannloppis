@@ -23,7 +23,18 @@ a:hover {
   box-sizing: border-box;
 }
 
-#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+#map { 
+  position: absolute; 
+  top: 0; 
+  bottom: 0; 
+  width: 100%; 
+}
+
+.mapboxgl-popup-close-button {
+  color: #000;
+  font-size: 20px;
+  margin: 3px 8px;
+}
 
 @layer base {
   body {

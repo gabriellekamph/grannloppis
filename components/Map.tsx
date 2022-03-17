@@ -3,7 +3,6 @@ import ReactMapGL, {
   Popup,
   NavigationControl,
   FullscreenControl,
-  ScaleControl,
   GeolocateControl,
 } from "react-map-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
@@ -39,7 +38,8 @@ const Map = () => {
         >
           <Pin onClick={() => {
             console.log(address)
-            setPopupInfo(address)}
+            setPopupInfo(address)
+          }
             } />
         </Marker>
       )),
@@ -57,7 +57,7 @@ const Map = () => {
         <GeolocateControl position="top-left" />
         <FullscreenControl position="top-left" />
         <NavigationControl position="top-left" />
-        <ScaleControl />
+
 
         {pins}
 
