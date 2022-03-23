@@ -3,18 +3,12 @@ import ReactMapGL, {
   Popup,
   NavigationControl,
   FullscreenControl,
-  GeolocateControl,
 } from "react-map-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
 import * as React from "react"
 import { useState, useMemo } from "react"
-
 import HOUSEHOLDS from "../data.json"
 import Pin from "./Pin"
-
-const MAPBOX_TOKEN =
-  "pk.eyJ1IjoiZ2FicmllbGxla2FtcGgiLCJhIjoiY2wwcnhpcTJpMDFoZjNpbzVqNjlmM29kbSJ9.oRJWtVkzXeEk0AmmvOfCig"
-// Make .env file work instead and get API key from there
 
 const INITIAL_VIEW_STATE = {
   latitude: 59.23146869560826,
@@ -52,12 +46,10 @@ const Map = () => {
         initialViewState={INITIAL_VIEW_STATE}
         style={{ width: 500, height: 450 }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
-        mapboxAccessToken={MAPBOX_TOKEN}
+        mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
       >
-        <GeolocateControl position="top-left" />
         <FullscreenControl position="top-left" />
         <NavigationControl position="top-left" />
-
 
         {pins}
 
@@ -77,7 +69,7 @@ const Map = () => {
         )}
       </ReactMapGL>
     </div>
-  );
-};
+  )
+}
 
 export default Map

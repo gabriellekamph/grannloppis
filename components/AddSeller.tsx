@@ -1,11 +1,33 @@
-import { useState } from "react";
+import React, { useState} from "react"
+import { db } from "../firebase"
+import { collection, serverTimestamp, addDoc } from "firebase/firestore"
 
 const AddSeller = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
-  const saveSeller = () => {
-    alert("new seller saved in database");
-  };
+  const [address, setAddress] = useState<string>('')
+  const [categories, setCategories] = useState<string[]>([])
+  const [info, setInfo] = useState<string>('')
+
+  const addSeller = (e: any) => {
+    e.preventDefault();
+    addDoc(collection(db, "sellers"), {
+      address: address,
+      info: info,
+      categories: categories,
+      timestamp: serverTimestamp(),
+    })
+    setShowModal(false)
+  }
+
+  const handleChecked = (e: any) => {
+    let updatedArray = [...categories]
+    if (e.target.checked) {
+        updatedArray = [...categories, e.target.value]
+    } else {
+        updatedArray.splice(categories.indexOf(e.target.value), 1)
+    } setCategories(updatedArray)
+  }
 
   return (
     <>
@@ -28,13 +50,14 @@ const AddSeller = () => {
                   <p className="text-sm text-black">Vad roligt att du vill vara med och sälja på loppisen! Fyll i din adress, välj vilken typ av varor du säljer och tryck på "Spara" för att läggas till på loppiskartan.</p>
                 </div>
                 <div className="relative p-5 pt-0 flex-auto text-black">
-                  <form onSubmit={saveSeller} className="text-black">
+                  <form onSubmit={addSeller} className="text-black">
                     <div className="relative flex w-full flex-wrap items-stretch mb-3">
                       <label htmlFor="address">
                         Vilken adress säljer du från?
                       </label>
                       <input
                         type="text"
+                        onChange={(e) => setAddress(e.target.value)}
                         placeholder="t.ex. Krusboda Torgväg 1"
                         className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full pr-10"
                       />
@@ -44,126 +67,125 @@ const AddSeller = () => {
                       <label htmlFor="address">Vad säljer du?</label>
                       <div className="flex justify-between mr-16">
                         <div className="flex flex-col">
-                          {" "}
-                          <label htmlFor="womans-clothing" className="mr-3">
+                          <label htmlFor="categories1" className="mr-3">
                             <input
                               type="checkbox"
-                              id="womans-clothing"
-                              name="womans-clothing"
-                              value="Women's Clothing"
+                              name="categories"
+                              value="Damkläder"
                               className="mr-2 mt-1"
+                              onChange={handleChecked}
                             />
                             Damkläder
                           </label>
-                          <label htmlFor="womans-shoes" className="mr-3">
+                          <label htmlFor="categories2" className="mr-3">
                             <input
                               type="checkbox"
-                              id="womans-shoes"
-                              name="womans-shoes"
-                              value="Women's Shoes"
+                              name="categories"
+                              value="Damskor"
                               className="mr-2 mt-1"
+                              onChange={handleChecked}
                             />
                             Damskor
                           </label>
-                          <label htmlFor="mens-clothing" className="mr-3">
+                          <label htmlFor="categories3" className="mr-3">
                             <input
                               type="checkbox"
-                              id="mens-clothing"
-                              name="mens-clothing"
-                              value="Men's Clothing"
+                              name="categories"
+                              value="Herrkläder"
                               className="mr-2 mt-1"
+                              onChange={handleChecked}
                             />
                             Herrkläder
                           </label>
-                          <label htmlFor="mens-shoes" className="mr-3">
+                          <label htmlFor="categories4" className="mr-3">
                             <input
                               type="checkbox"
-                              id="mens-shoes"
-                              name="mens-shoes"
-                              value="Men's Shoes"
+                              name="categories[]"
+                              value="Herrskor"
                               className="mr-2 mt-1"
+                              onChange={handleChecked}
                             />
                             Herrskor
                           </label>
-                          <label htmlFor="kids-clothing" className="mr-3">
+                          <label htmlFor="categories5" className="mr-3">
                             <input
                               type="checkbox"
-                              id="kids-clothing"
-                              name="kids-clothing"
-                              value="Kids Clothing"
+                              name="categories"
+                              value="Barnkläder"
                               className="mr-2 mt-1"
+                              onChange={handleChecked}
                             />
                             Barnkläder
                           </label>
-                          <label htmlFor="kids-shoes" className="mr-3">
+                          <label htmlFor="categories6" className="mr-3">
                             <input
                               type="checkbox"
-                              id="kids-shoes"
-                              name="kids-shoes"
-                              value="Kids shoes"
+                              name="categories"
+                              value="Barnskor"
                               className="mr-2 mt-1"
+                              onChange={handleChecked}
                             />
                             Barnskor
                           </label>
                         </div>
                         <div className="flex flex-col">
-                        <label htmlFor="toys" className="mr-3">
+                        <label htmlFor="categories7" className="mr-3">
                             <input
                               type="checkbox"
-                              id="toys"
-                              name="toys"
-                              value="Toys"
+                              name="categories"
+                              value="Leksaker"
                               className="mr-2 mt-1"
+                              onChange={handleChecked}
                             />
                             Leksaker
                           </label>
                           <label htmlFor="kids-other" className="mr-3">
                             <input
                               type="checkbox"
-                              id="kids-other"
-                              name="kids-other"
-                              value="Other kids stuff"
+                              name="categories"
+                              value="Övriga barnartiklar"
                               className="mr-2 mt-1"
+                              onChange={handleChecked}
                             />
                             Övriga barnartiklar
                           </label>
-                          <label htmlFor="interior" className="mr-3">
+                          <label htmlFor="categories8" className="mr-3">
                             <input
                               type="checkbox"
-                              id="interior"
-                              name="interior"
-                              value="Interior"
+                              name="categories"
+                              value="Inredning"
                               className="mr-2 mt-1"
+                              onChange={handleChecked}
                             />
                             Inredning
                           </label>
-                          <label htmlFor="furniture" className="mr-3">
+                          <label htmlFor="categories9" className="mr-3">
                             <input
                               type="checkbox"
-                              id="furniture"
-                              name="furniture"
-                              value="Furniture"
+                              name="categories"
+                              value="Möbler"
                               className="mr-2 mt-1"
+                              onChange={handleChecked}
                             />
                             Möbler
                           </label>
-                        <label htmlFor="tools" className="mr-3">
+                        <label htmlFor="categories10" className="mr-3">
                             <input
                               type="checkbox"
-                              id="tools"
-                              name="tools"
-                              value="Tools"
+                              name="categories"
+                              value="Verktyg"
                               className="mr-2 mt-1"
+                              onChange={handleChecked}
                             />
                             Verktyg
                           </label>
-                          <label htmlFor="coffee" className="mr-3">
+                          <label htmlFor="categories11" className="mr-3">
                             <input
                               type="checkbox"
-                              id="coffee"
-                              name="coffee"
-                              value="Coffee"
+                              name="categories"
+                              value="Kaffe/Fika"
                               className="mr-2 mt-1"
+                              onChange={handleChecked}
                             />
                             Kaffe/Fika
                           </label>
@@ -176,6 +198,7 @@ const AddSeller = () => {
                       </label>
                       <input
                         type="text"
+                        onChange={(e) => setInfo(e.target.value)}
                         placeholder="t.ex. särskilda öppettider eller om någon kategori saknas ovan."
                         className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full pr-10"
                       />
@@ -193,7 +216,7 @@ const AddSeller = () => {
                   <button
                     className="bg-emerald-500 text-black active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={addSeller}
                   >
                     Spara
                   </button>
@@ -205,7 +228,7 @@ const AddSeller = () => {
         </>
       ) : null}
     </>
-  )
-}
+  );
+};
 
-export default AddSeller
+export default AddSeller;

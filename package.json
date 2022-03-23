@@ -12,6 +12,8 @@
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.6",
     "@types/react-map-gl": "^6.1.2",
+    "firebase": "^9.6.9",
+    "firebase-admin": "^10.0.2",
     "mapbox-gl": "^2.7.0",
     "next": "12.1.0",
     "react": "17.0.2",
