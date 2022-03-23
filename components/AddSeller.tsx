@@ -49,7 +49,7 @@ const AddSeller = () => {
                   <h3 className="text-3xl font-semibold text-black mb-3">
                     Anmäl dig som säljare
                   </h3>
-                  <p className="text-sm text-black">Vad roligt att du vill vara med och sälja på loppisen! Fyll i din adress, välj vilken typ av varor du säljer och tryck på "Spara" för att läggas till på loppiskartan.</p>
+                  <p className="text-sm text-black">Vad roligt att du vill vara med och sälja på loppisen! Fyll i din adress, välj vilken typ av varor du säljer och tryck på Spara för att läggas till på loppiskartan.</p>
                 </div>
                 <div className="relative p-5 pt-0 flex-auto text-black">
                   <form onSubmit={addSeller} className="text-black">
