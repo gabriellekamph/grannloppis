@@ -18,6 +18,7 @@ const AddSeller = () => {
       timestamp: serverTimestamp(),
     })
     setShowModal(false)
+    console.log("data sent to database")
   }
 
   const handleChecked = (e: any) => {
@@ -27,6 +28,7 @@ const AddSeller = () => {
     } else {
         updatedArray.splice(categories.indexOf(e.target.value), 1)
     } setCategories(updatedArray)
+    console.log(updatedArray)
   }
 
   return (
