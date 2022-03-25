@@ -1,7 +1,7 @@
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import AddSeller from "../components/AddSeller"
-import GoogleMap from '../components/GoogleMap'
+import MapContainer from '../components/MapContainer'
 
 
 const Area = () => {
@@ -10,7 +10,7 @@ const Area = () => {
     <div className="App container w-full">
       <Header />
       <AddSeller />
-      <GoogleMap />
+      <MapContainer />
       <Footer />
     </div>
   );
