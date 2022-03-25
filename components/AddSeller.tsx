@@ -33,7 +33,7 @@ const AddSeller = () => {
     <>
     <div className="w-full flex justify-center mt-4">
     <button
-        className="text-white hover:bg-pink-600 text-md px-6 py-3 rounded border-solid border-2 border-white-200 hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
+        className="text-white hover:bg-pink-600 text-md px-6 py-3 rounded-md px-4 py-3 border-solid border-2 border-white-200 hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
         onClick={() => setShowModal(true)}
       >
@@ -207,7 +207,7 @@ const AddSeller = () => {
                     </div>
                   </form>
                 </div>
-                <div className="flex items-center text-black justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                <div className="flex items-center text-black justify-end p-6">
                   <button
                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
