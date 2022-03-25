@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+import React, { useState } from 'react'
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 
 const AutoComplete = () => {
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState(null)
 
   return (
     <div className="text-black">
@@ -13,7 +13,7 @@ const AutoComplete = () => {
         }}
       />
     </div>
-  );
+  )
 }
 
 export default AutoComplete

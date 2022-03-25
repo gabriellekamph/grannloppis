@@ -12,7 +12,7 @@ const Area = () => {
       <MapContainer />
       <Footer />
     </>
-  );
-};
+  )
+}
 
 export default Area

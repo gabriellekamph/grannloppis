@@ -1,5 +1,5 @@
-import React from "react";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import React from "react"
+import { GoogleMap } from "@react-google-maps/api"
 
 const MapContainer = () => {
 
@@ -15,15 +15,11 @@ const MapContainer = () => {
 
   return (
     <div className="container mx-auto mt-8">
-      <LoadScript
-        googleMapsApiKey="AIzaSyBVQe5X9fDymMlDm7FoWAAsxpYwXy2c1Fg" // Put this in the .env file and make it work later
-      >
-        <GoogleMap
-          mapContainerStyle={mapStyles}
-          zoom={15}
-          center={defaultCenter}
-        />
-      </LoadScript>
+      <GoogleMap
+        mapContainerStyle={mapStyles}
+        zoom={15}
+        center={defaultCenter}
+      />
     </div>
 
   )
