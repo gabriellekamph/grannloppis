@@ -1,6 +1,7 @@
 import React, { useState} from "react"
 import { db } from "../firebase"
 import { collection, serverTimestamp, addDoc } from "firebase/firestore"
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 
 const AddSeller = () => {
   const [showModal, setShowModal] = useState(false)
@@ -59,12 +60,21 @@ const AddSeller = () => {
                       <label htmlFor="address">
                         Vilken adress säljer du från?
                       </label>
-                      <input
+                      <div className="py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm outline-none focus:outline-none focus:ring w-full pr-10">
+                        <GooglePlacesAutocomplete
+                          selectProps={{
+                            address,
+                            onChange: setAddress,
+                          }}
+                        />
+                      </div>
+
+                      {/* <input
                         type="text"
                         onChange={(e) => setAddress(e.target.value)}
                         placeholder="t.ex. Krusboda Torgväg 1"
                         className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full pr-10"
-                      />
+                      /> */}
                     </div>
 
                     <div className="relative flex w-96 flex-wrap flex-col items-stretch mb-3 pt-3">
