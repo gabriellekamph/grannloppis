@@ -1,17 +1,19 @@
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-import Map from "../components/Map"
 import AddSeller from "../components/AddSeller"
+import GoogleMap from '../components/GoogleMap'
+
 
 const Area = () => {
+
   return (
-    <div className="container w-full">
+    <div className="App container w-full">
       <Header />
       <AddSeller />
-      <Map />
+      <GoogleMap />
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Area
+export default Area;

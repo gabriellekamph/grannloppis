@@ -11,16 +11,15 @@
   "dependencies": {
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.6",
-    "@types/react-map-gl": "^6.1.2",
     "firebase": "^9.6.9",
     "firebase-admin": "^10.0.2",
-    "mapbox-gl": "^2.7.0",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-map-gl": "^7.0.10"
+    "react-hook-google-maps": "^0.0.3"
   },
   "devDependencies": {
+    "@types/googlemaps": "^3.43.3",
     "@types/node": "17.0.21",
     "@types/react": "17.0.40",
     "autoprefixer": "^10.4.2",
