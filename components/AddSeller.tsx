@@ -1,14 +1,18 @@
 import React, { useState} from "react"
 import { db } from "../firebase"
 import { collection, serverTimestamp, addDoc } from "firebase/firestore"
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
+import GooglePlacesAutocomplete, {geocodeByAddress, getLatLng} from 'react-google-places-autocomplete'
 
 const AddSeller = () => {
   const [showModal, setShowModal] = useState(false)
 
-  const [address, setAddress] = useState<string>('')
+  const [address, setAddress] = useState<string|any>('')
   const [categories, setCategories] = useState<string[]>([])
   const [info, setInfo] = useState<string>('')
+  const [coordinates, setCoordinates] = useState<any>({
+    lat: null,
+    lng: null,
+  })
 
   const addSeller = (e: any) => {
     e.preventDefault();
@@ -16,10 +20,11 @@ const AddSeller = () => {
       address: address,
       info: info,
       categories: categories,
+      coordinates: coordinates,
       timestamp: serverTimestamp(),
     })
     setShowModal(false)
-    console.log("data sent to database")
+    console.log("Data sent to database")
   }
 
   const handleChecked = (e: any) => {
@@ -30,6 +35,18 @@ const AddSeller = () => {
         updatedArray.splice(categories.indexOf(e.target.value), 1)
     } setCategories(updatedArray)
     console.log(updatedArray)
+  }
+
+  const handleChange = (address: any) => {
+    const selectedAddress = address.label
+    setAddress(selectedAddress)
+
+    geocodeByAddress(selectedAddress)
+    .then(results => getLatLng(results[0]))
+    .then(({ lat, lng }) => {
+      console.log('Successfully got latitude and longitude', { lat, lng })
+      setCoordinates({ lat, lng })
+    })
   }
 
   return (
@@ -62,9 +79,11 @@ const AddSeller = () => {
                       </label>
                       <div className="py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm outline-none focus:outline-none focus:ring w-full pr-10">
                         <GooglePlacesAutocomplete
+                        
                           selectProps={{
                             address,
-                            onChange: setAddress,
+                            onChange: handleChange,
+                            placeholder: "t.ex. Krusboda Torgväg 1"
                           }}
                         />
                       </div>
