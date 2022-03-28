@@ -7,9 +7,11 @@
         "geocode",
         "geolocate",
         "grannloppis",
+        "hide",
         "logo",
         "mapbox",
         "mapboxgl",
+        "pois",
         "setlocation",
         "token",
         "white"
