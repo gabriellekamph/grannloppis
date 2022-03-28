@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { GoogleMap, Marker, InfoWindow } from "@react-google-maps/api"
-import { collection, query, getDocs } from "firebase/firestore"
+import { collection, query, onSnapshot } from "firebase/firestore"
 import { db } from "../firebase"
 
 const MapContainer = () => {
@@ -31,17 +31,17 @@ const MapContainer = () => {
 
   const fetchBlogs = async() => {
 
-    let allSellers:any = []
     const q = await query(collection(db, 'sellers'))
-    const querySnapshot = await getDocs(q)
 
-    querySnapshot.forEach((doc) => {
-      const data = doc.data()
-      allSellers.push(data)
+    const getData = onSnapshot(q, (querySnapshot) => {
+      let allSellers:any = []
+      querySnapshot.forEach((doc) => {
+        const data = doc.data()
+        allSellers.push(data)
+      })
+      setSellers(allSellers)
     })
-    setSellers(allSellers)
   }
-
 
   return (
     <div className="container mx-auto mt-8">
