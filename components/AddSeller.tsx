@@ -9,7 +9,7 @@ const AddSeller = () => {
   const [address, setAddress] = useState<string|any>('')
   const [categories, setCategories] = useState<string[]>([])
   const [info, setInfo] = useState<string>('')
-  const [coordinates, setCoordinates] = useState({
+  const [coordinates, setCoordinates] = useState<any>({
     lat: null,
     lng: null,
   })
@@ -24,7 +24,7 @@ const AddSeller = () => {
       timestamp: serverTimestamp(),
     })
     setShowModal(false)
-    console.log("data sent to database")
+    console.log("Data sent to database")
   }
 
   const handleChecked = (e: any) => {
@@ -35,6 +35,18 @@ const AddSeller = () => {
         updatedArray.splice(categories.indexOf(e.target.value), 1)
     } setCategories(updatedArray)
     console.log(updatedArray)
+  }
+
+  const handleChange = (address: any) => {
+    const selectedAddress = address.label
+    setAddress(selectedAddress)
+
+    geocodeByAddress(selectedAddress)
+    .then(results => getLatLng(results[0]))
+    .then(({ lat, lng }) => {
+      console.log('Successfully got latitude and longitude', { lat, lng })
+      setCoordinates({ lat, lng })
+    })
   }
 
   return (
@@ -70,7 +82,7 @@ const AddSeller = () => {
                         
                           selectProps={{
                             address,
-                            onChange: setAddress,
+                            onChange: handleChange,
                             placeholder: "t.ex. Krusboda Torgväg 1"
                           }}
                         />

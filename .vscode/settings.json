@@ -1,7 +1,10 @@
 {
     "cSpell.ignoreWords": [
+        "address",
+        "by",
         "control",
         "firestore",
+        "geocode",
         "geolocate",
         "grannloppis",
         "logo",
