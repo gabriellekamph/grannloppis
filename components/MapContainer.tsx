@@ -1,7 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { GoogleMap, Marker, InfoWindow } from "@react-google-maps/api"
-import HOUSEHOLDS from "../data.json"
-
+import { collection, query, getDocs } from "firebase/firestore"
+import { db } from "../firebase"
 
 const MapContainer = () => {
 
@@ -15,7 +15,8 @@ const MapContainer = () => {
     lng: 18.247962069565833,
   }
   
-  const [activeMarker, setActiveMarker] = useState(null);
+  const [activeMarker, setActiveMarker] = useState(null)
+  const [sellers, setSellers] = useState<any>([])
 
   const handleActiveMarker = (marker: any) => {
     if (marker === activeMarker) {
@@ -24,31 +25,23 @@ const MapContainer = () => {
     setActiveMarker(marker)
   }
 
-  // Static data for markers atm - get this from firebase instead
+  useEffect(() => {
+    fetchBlogs()
+  }, [])
 
-  const markers = [
-    {
-      id: 1,
-      address: "Pärlröksgången 129",
-      position: { lng: 18.255076969461385, lat: 59.22964095891195},      
-      categories: "barnkläder, damkläder, leksaker",
-      info: "säljer mellan 12-14"
-    },
-    {
-      id: 2,
-      address: "Krusboda Torg 1",
-      position: { lng: 18.25347837355799, lat: 59.23026119395223 },
-      categories: "inredning, böcker, trädgårdsredskap",
-      info: "ingen övrig info"
-    },
-    {
-      id: 3,
-      address: "Pärlröksgången 73",
-      position: { lng: 18.25667556644108, lat: 59.23027217146374 },
-      categories: "damkläder, herrkläder, barnkläder",
-      info: ""
-    }
-  ]
+  const fetchBlogs = async() => {
+
+    let allSellers:any = []
+    const q = await query(collection(db, 'sellers'))
+    const querySnapshot = await getDocs(q)
+
+    querySnapshot.forEach((doc) => {
+      const data = doc.data()
+      allSellers.push(data)
+    })
+    setSellers(allSellers)
+  }
+
 
   return (
     <div className="container mx-auto mt-8">
@@ -57,18 +50,18 @@ const MapContainer = () => {
         zoom={15}
         center={defaultCenter}
       >
-        {markers.map(({ id, address, position, categories, info }) => (
+        {sellers && sellers.map((data: any) => (
           <Marker
-            key={id}
-            position={position}
-            onClick={() => handleActiveMarker(id)}
+            key={data.id}
+            position={data.location}
+            onClick={() => handleActiveMarker(data.id)}
           >
-            {activeMarker === id ? (
+            {activeMarker === data.id ? (
               <InfoWindow onCloseClick={() => setActiveMarker(null)}>
                 <div className="container text-black flex flex-col">
-                  <span className="font-bold mb-2">{address}</span>
-                  <span>{categories}</span>
-                  <span>{info}</span>
+                  <span className="font-bold mb-2">{data.address}</span>
+                  <span>{data.categories}</span>
+                  <span>{data.info}</span>
                 </div>
               </InfoWindow>
             ) : null}
