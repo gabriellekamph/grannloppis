@@ -7,9 +7,14 @@
         "geocode",
         "geolocate",
         "grannloppis",
+        "hide",
         "logo",
         "mapbox",
         "mapboxgl",
+<<<<<<< HEAD
+        "pois",
+=======
+>>>>>>> main
         "setlocation",
         "token",
         "white"

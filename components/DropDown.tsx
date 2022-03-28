@@ -39,9 +39,6 @@ const DropDown = () => {
             <Menu.Item>
               <MyLink href="/krusboda">Krusboda</MyLink>
             </Menu.Item>
-            <Menu.Item>
-              <MyLink href="/öringe">Öringe</MyLink>
-            </Menu.Item>
           </Menu.Items>
         </Transition>
       </Menu>

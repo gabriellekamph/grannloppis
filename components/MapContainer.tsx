@@ -4,19 +4,30 @@ import { collection, query, onSnapshot } from "firebase/firestore"
 import { db } from "../firebase"
 
 const MapContainer = () => {
+  
+  const [activeMarker, setActiveMarker] = useState(null)
+  const [sellers, setSellers] = useState<any>([])
 
   const mapStyles = {
-    height: "70vh",
-    width: "100%",
+    height: "60vh",
+    width: "100%" 
   }
+
+  const hidePois = [
+    {
+      featureType: "poi",
+      stylers: [
+          {
+            visibility: "off",
+          }
+      ]
+    }
+  ]
 
   const defaultCenter = {
     lat: 59.23146869560826,
     lng: 18.247962069565833,
   }
-  
-  const [activeMarker, setActiveMarker] = useState(null)
-  const [sellers, setSellers] = useState<any>([])
 
   const handleActiveMarker = (marker: any) => {
     if (marker === activeMarker) {
@@ -49,6 +60,9 @@ const MapContainer = () => {
         mapContainerStyle={mapStyles}
         zoom={15}
         center={defaultCenter}
+        options={{
+          styles: hidePois,
+        }}
       >
         {sellers && sellers.map((data: any) => (
           <Marker
@@ -67,7 +81,6 @@ const MapContainer = () => {
             ) : null}
           </Marker>
         ))}
-
         </GoogleMap>
     </div>
 
