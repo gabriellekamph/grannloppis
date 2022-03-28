@@ -28,7 +28,7 @@ const MapContainer = () => {
     lat: 59.23146869560826,
     lng: 18.247962069565833,
   }
- 
+
   const handleActiveMarker = (marker: any) => {
     if (marker === activeMarker) {
       return
