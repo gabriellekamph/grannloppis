@@ -9,8 +9,8 @@ const MapContainer = () => {
   const [sellers, setSellers] = useState<any>([])
 
   const mapStyles = {
-    height: "70vh",
-    width: "100%"    
+    height: "60vh",
+    width: "100%" 
   }
 
   const hidePois = [
@@ -19,8 +19,8 @@ const MapContainer = () => {
       stylers: [
           {
             visibility: "off",
-          },
-      ],
+          }
+      ]
     }
   ]
 

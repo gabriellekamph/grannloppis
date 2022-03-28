@@ -67,21 +67,20 @@ const AddSeller = () => {
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none m-5">
-            <div className="w-auto my-6 mx-auto max-w-3xl">
-              <div className="rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                <div className="flex items-start flex-col p-5">
+              <div className="container w-full bg-white p-5">
+                <div className="container w-auto mb-8">
                   <h3 className="text-3xl font-semibold text-black mb-3">
                     Anmäl dig som säljare
                   </h3>
                   <p className="text-sm text-black">Vad roligt att du vill vara med och sälja på loppisen! Fyll i din adress, välj vilken typ av varor du säljer och tryck på Spara för att läggas till på loppiskartan.</p>
                 </div>
-                <div className="relative p-5 pt-0 flex-auto text-black">
+                <div className="container w-auto text-black">
                   <form onSubmit={addSeller} className="text-black">
-                    <div className="relative flex w-full flex-wrap items-stretch mb-3">
+                    <div className="flex w-full flex-wrap items-stretch mb-3">
                       <label htmlFor="address">
                         Vilken adress säljer du från?
                       </label>
-                      <div className="py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm outline-none focus:outline-none focus:ring w-full pr-10">
+                      <div className="py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm outline-none focus:outline-none focus:ring w-full">
                         <GooglePlacesAutocomplete
                         
                           selectProps={{
@@ -229,13 +228,13 @@ const AddSeller = () => {
                       <input
                         type="text"
                         onChange={(e) => setInfo(e.target.value)}
-                        placeholder="t.ex. särskilda öppettider eller om någon kategori saknas ovan."
+                        placeholder="t.ex. särskilda öppettider"
                         className="py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm outline-none border border-blueGray-300 focus:outline-none focus:ring w-full pr-10 pl-3 mt-3"
                       />
                     </div>
                   </form>
                 </div>
-                <div className="flex items-center text-black justify-end p-6">
+                <div className="flex items-center text-black justify-end pt-6">
                   <button
                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
@@ -252,7 +251,7 @@ const AddSeller = () => {
                   </button>
                 </div>
               </div>
-            </div>
+
           </div>
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
