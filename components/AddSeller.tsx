@@ -2,14 +2,16 @@ import React, { useState} from "react"
 import { db } from "../firebase"
 import { collection, serverTimestamp, addDoc } from "firebase/firestore"
 import GooglePlacesAutocomplete, {geocodeByAddress, getLatLng} from 'react-google-places-autocomplete'
+import { v4 as uuidv4 } from 'uuid'
 
 const AddSeller = () => {
   const [showModal, setShowModal] = useState(false)
 
+  const [id, setId] = useState<any>(null)
   const [address, setAddress] = useState<string|any>('')
   const [categories, setCategories] = useState<string[]>([])
   const [info, setInfo] = useState<string>('')
-  const [coordinates, setCoordinates] = useState<any>({
+  const [location, setlocation] = useState<any>({
     lat: null,
     lng: null,
   })
@@ -17,14 +19,16 @@ const AddSeller = () => {
   const addSeller = (e: any) => {
     e.preventDefault();
     addDoc(collection(db, "sellers"), {
+      id: uuidv4(),
       address: address,
       info: info,
       categories: categories,
-      coordinates: coordinates,
+      location: location,
       timestamp: serverTimestamp(),
     })
     setShowModal(false)
     console.log("Data sent to database")
+    
   }
 
   const handleChecked = (e: any) => {
@@ -45,7 +49,7 @@ const AddSeller = () => {
     .then(results => getLatLng(results[0]))
     .then(({ lat, lng }) => {
       console.log('Successfully got latitude and longitude', { lat, lng })
-      setCoordinates({ lat, lng })
+      setlocation({ lat, lng })
     })
   }
 

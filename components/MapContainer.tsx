@@ -1,5 +1,7 @@
-import React from "react"
-import { GoogleMap, Marker } from "@react-google-maps/api"
+import React, { useState, useEffect } from "react"
+import { GoogleMap, Marker, InfoWindow } from "@react-google-maps/api"
+import { collection, query, onSnapshot } from "firebase/firestore"
+import { db } from "../firebase"
 
 const MapContainer = () => {
 
@@ -12,16 +14,33 @@ const MapContainer = () => {
     lat: 59.23146869560826,
     lng: 18.247962069565833,
   }
+  
+  const [activeMarker, setActiveMarker] = useState(null)
+  const [sellers, setSellers] = useState<any>([])
 
-  const onLoad = (marker: google.maps.Marker) => {
-    console.log('marker: ', marker)
+  const handleActiveMarker = (marker: any) => {
+    if (marker === activeMarker) {
+      return
+    }
+    setActiveMarker(marker)
   }
 
-  // Get position data for markers from json file first (and make it work, then use database)
-  
-  const position: any = {
-    lat: 59.23146869560826,
-    lng: 18.247962069565833,
+  useEffect(() => {
+    fetchBlogs()
+  }, [])
+
+  const fetchBlogs = async() => {
+
+    const q = await query(collection(db, 'sellers'))
+
+    const getData = onSnapshot(q, (querySnapshot) => {
+      let allSellers:any = []
+      querySnapshot.forEach((doc) => {
+        const data = doc.data()
+        allSellers.push(data)
+      })
+      setSellers(allSellers)
+    })
   }
 
   return (
@@ -29,12 +48,26 @@ const MapContainer = () => {
       <GoogleMap
         mapContainerStyle={mapStyles}
         zoom={15}
-        center={defaultCenter}>
+        center={defaultCenter}
+      >
+        {sellers && sellers.map((data: any) => (
+          <Marker
+            key={data.id}
+            position={data.location}
+            onClick={() => handleActiveMarker(data.id)}
+          >
+            {activeMarker === data.id ? (
+              <InfoWindow onCloseClick={() => setActiveMarker(null)}>
+                <div className="container text-black flex flex-col">
+                  <span className="font-bold mb-2">{data.address}</span>
+                  <span>{data.categories}</span>
+                  <span>{data.info}</span>
+                </div>
+              </InfoWindow>
+            ) : null}
+          </Marker>
+        ))}
 
-        <Marker 
-        position={position}
-        onLoad={onLoad}
-        />
         </GoogleMap>
     </div>
 
