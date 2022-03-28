@@ -9,7 +9,7 @@ const AddSeller = () => {
   const [address, setAddress] = useState<string|any>('')
   const [categories, setCategories] = useState<string[]>([])
   const [info, setInfo] = useState<string>('')
-  const [coordinates, setCoordinates] = useState<any>({
+  const [location, setlocation] = useState<any>({
     lat: null,
     lng: null,
   })
@@ -20,7 +20,7 @@ const AddSeller = () => {
       address: address,
       info: info,
       categories: categories,
-      coordinates: coordinates,
+      location: location,
       timestamp: serverTimestamp(),
     })
     setShowModal(false)
@@ -45,7 +45,7 @@ const AddSeller = () => {
     .then(results => getLatLng(results[0]))
     .then(({ lat, lng }) => {
       console.log('Successfully got latitude and longitude', { lat, lng })
-      setCoordinates({ lat, lng })
+      setlocation({ lat, lng })
     })
   }
 

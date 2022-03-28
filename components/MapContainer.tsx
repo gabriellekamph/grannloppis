@@ -69,7 +69,7 @@ const MapContainer = () => {
                   <span className="font-bold mb-2">{address}</span>
                   <span>{categories}</span>
                   <span>{info}</span>
-                  </div>
+                </div>
               </InfoWindow>
             ) : null}
           </Marker>

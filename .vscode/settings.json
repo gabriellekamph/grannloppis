@@ -10,6 +10,7 @@
         "logo",
         "mapbox",
         "mapboxgl",
+        "setlocation",
         "token",
         "white"
     ]
