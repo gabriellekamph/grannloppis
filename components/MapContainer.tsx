@@ -72,12 +72,12 @@ const MapContainer = () => {
           >
             {activeMarker === data.id ? (
               <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                <div className="container text-black flex flex-col">
-                  <span className="font-bold mb-2">{data.address}</span>
-                  <span>{data.categories}</span>
-                  <span>{data.info}</span>
-                </div>
-              </InfoWindow>
+              <div className="container text-black flex flex-col">
+                <span className="font-bold mb-2">{data.address} </span>
+                <span>{data.categories.join(', ')}</span>
+                <span className="mt-2">{data.info}</span>
+              </div>
+            </InfoWindow>
             ) : null}
           </Marker>
         ))}

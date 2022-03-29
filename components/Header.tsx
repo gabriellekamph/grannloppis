@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { UserIcon, ArrowNarrowLeftIcon } from "@heroicons/react/solid"
 import { useRouter } from "next/router"
+import LoginBtn from "./LoginBtn"
 
 const Header = () => {
   const router = useRouter()
@@ -14,9 +15,11 @@ const Header = () => {
             <ArrowNarrowLeftIcon className="h-8 w-8" />
           </a>
         </Link>
-        <UserIcon className="h-8 w-8" />
+        {/* <UserIcon className="h-8 w-8" /> */}
+        <LoginBtn />
       </div>
         <h1 className="text-5xl font-bold uppercase text-center">{area}</h1>
+        <p className="text-center">Logga in för att anmäla dig som säljare på loppisen.</p>
     </div>
   )
 }
