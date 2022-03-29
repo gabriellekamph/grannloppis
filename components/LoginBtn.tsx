@@ -63,14 +63,6 @@ const LoginBtn = () => {
                 placeholder="E-postadress"
                 className="py-3 placeholder-blueGray-300 text-blueGray-600 mb-3 relative bg-white rounded text-sm outline-none border border-blueGray-300 focus:outline-none focus:ring w-full pr-10 pl-3 mt-3"
               />
-              {submitted ? (
-                <div>
-                  <p>
-                    Inloggningslänk skickad <Emoji symbol="🎉" />
-                  </p>
-                </div>
-              ) : null}
-
               <div className="flex items-center text-black justify-end pt-6">
                 <button
                   className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
@@ -99,8 +91,8 @@ const LoginBtn = () => {
             Inloggningslänk skickad <Emoji symbol="🎉" />
           </p>
           <button
-            className="bg-emerald-500 text-black active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mt-2 mb-1 ease-linear transition-all duration-150"
-                    type="button"
+            className="bg-emerald-500 text-black active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mt-5 mb-1 ease-linear transition-all duration-150"
+            type="button"
             onClick={() => {
               setShowModal(false), setSubmitted(false)
             }}
