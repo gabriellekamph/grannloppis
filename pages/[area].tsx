@@ -8,7 +8,7 @@ const Area = () => {
   return (
     <>
       <Header />
-      <AddSeller />
+      {/* <AddSeller /> */}
       <MapContainer />
       <Footer />
     </>
