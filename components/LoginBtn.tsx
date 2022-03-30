@@ -19,7 +19,7 @@ const LoginBtn = () => {
 
   const login = (e: any) => {
     e.preventDefault();
-    const email = emailRef.current.value
+    const email: any = emailRef.current.value
     const actionCodeSettings = {
       url: 'https://localhost:3000/login',
       //url: 'https://test-diveboard.firebaseapp.com',
