@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { getAuth, isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth"
-import { auth } from '../firebase'
+import { auth } from '../../firebase'
 
 const Login = () => {
 

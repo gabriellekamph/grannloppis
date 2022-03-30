@@ -21,7 +21,8 @@ const LoginBtn = () => {
     e.preventDefault();
     const email: any = emailRef.current.value
     const actionCodeSettings = {
-      url: 'https://localhost:3000/login',
+      // url: window.location.href,
+      url: `https://grannloppis.vercel.com/${area}/login/`,
       //url: 'https://test-diveboard.firebaseapp.com',
       handleCodeInApp: true,
     }
