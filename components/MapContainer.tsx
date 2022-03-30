@@ -10,7 +10,7 @@ const MapContainer = () => {
 
   const mapStyles = {
     height: "60vh",
-    width: "100%" 
+    width: "100%"
   }
 
   const hidePois = [

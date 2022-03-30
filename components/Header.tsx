@@ -2,6 +2,7 @@ import Link from "next/link"
 import { UserIcon, ArrowNarrowLeftIcon } from "@heroicons/react/solid"
 import { useRouter } from "next/router"
 import LoginBtn from "./LoginBtn"
+import { useState, useEffect } from 'react'
 
 const Header = () => {
   const router = useRouter()

@@ -67,7 +67,7 @@ const AddSeller = () => {
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none m-5">
-              <div className="container w-full bg-white p-5 rounded-lg px-5">
+              <div className="container max-w-lg bg-white p-5 rounded-lg px-5">
                 <div className="container w-auto mb-8">
                   <h3 className="text-3xl font-semibold text-black mb-3">
                     Anmäl dig som säljare

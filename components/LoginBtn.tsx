@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react"
+import { useRouter } from "next/router"
 import {
   sendSignInLinkToEmail,
 } from "firebase/auth"
@@ -6,6 +7,10 @@ import { auth } from "../firebase"
 import Emoji from "./Emoji"
 
 const LoginBtn = () => {
+
+  const router = useRouter()
+  const { area } = router.query
+
   const [showModal, setShowModal] = useState(false)
   const [email, setEmail] = useState<string>('')
   const [submitted, setSubmitted] = useState(false)
@@ -14,17 +19,17 @@ const LoginBtn = () => {
 
   const login = (e: any) => {
     e.preventDefault();
-    const email = emailRef.current.value;
+    const email = emailRef.current.value
     const actionCodeSettings = {
-      url: window.location.href,
+      url: 'https://localhost:3000/login',
       //url: 'https://test-diveboard.firebaseapp.com',
       handleCodeInApp: true,
     }
     sendSignInLinkToEmail(auth, email, actionCodeSettings)
       .then(() => {
         console.log("E-postlänk skickad");
-        setEmail("");
-        setSubmitted(true);
+        setEmail("")
+        setSubmitted(true)
         window.localStorage.setItem("emailForSignIn", email)
 
         if (showModal === false) {
@@ -50,8 +55,7 @@ const LoginBtn = () => {
 
       {showModal && !submitted ? (
           <>
-        <div className="container w-auto h-auto bg-white text-black p-5 flex overflow-x-hidden overflow-y-auto fixed z-50 outline-none focus:outline-none m-5 absolute top-10 right-0 rounded-md px-5">
-          <div className="signin">
+        <div className="container max-w-sm h-auto bg-white mx-auto text-black p-5 m-5 flex overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-md px-5">
             <form>
               <h1 className="font-bold text-lg">Logga in</h1>
               <p>Fyll i din e-postadress för att få en inloggningslänk. </p>
@@ -61,7 +65,7 @@ const LoginBtn = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 placeholder="E-postadress"
-                className="py-3 placeholder-blueGray-300 text-blueGray-600 mb-3 relative bg-white rounded text-sm outline-none border border-blueGray-300 focus:outline-none focus:ring w-full pr-10 pl-3 mt-3"
+                className="py-3 placeholder-blueGray-300 text-blueGray-600 mb-3 relative bg-white rounded text-sm outline-none border border-blueGray-300 focus:outline-none focus:ring w-full pl-3 mt-3"
               />
               <div className="flex items-center text-black justify-end pt-6">
                 <button
@@ -80,18 +84,17 @@ const LoginBtn = () => {
                 </button>
               </div>
             </form>
-          </div>
         </div>
         <div className="opacity-50 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : showModal && submitted ? (
           <>
-        <div className="container flex flex-col w-auto h-auto bg-white text-black p-5 flex overflow-x-hidden overflow-y-auto fixed z-50 outline-none focus:outline-none m-5 absolute top-10 right-0 rounded-md px-5">
+        <div className="container max-w-min h-auto bg-white mx-auto text-black p-5 m-5 flex flex-col overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-md px-5">
           <p>
             Inloggningslänk skickad <Emoji symbol="🎉" />
           </p>
           <button
-            className="bg-emerald-500 text-black active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mt-5 mb-1 ease-linear transition-all duration-150"
+            className="bg-emerald-500 w-32 text-black active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-10 ml-10 mt-5 mb-1 ease-linear transition-all duration-150"
             type="button"
             onClick={() => {
               setShowModal(false), setSubmitted(false)
