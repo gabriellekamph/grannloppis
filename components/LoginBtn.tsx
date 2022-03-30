@@ -22,7 +22,7 @@ const LoginBtn = () => {
     const email: any = emailRef.current.value
     const actionCodeSettings = {
       // url: window.location.href,
-      url: `https://www.grannloppis.vercel.app/${area}/login`,
+      url: `https://grannloppis.vercel.com/${area}/login/`,
       //url: 'https://test-diveboard.firebaseapp.com',
       handleCodeInApp: true,
     }
