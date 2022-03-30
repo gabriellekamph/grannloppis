@@ -12,7 +12,7 @@ const LoginBtn = () => {
   const { area } = router.query
 
   const [showModal, setShowModal] = useState(false)
-  const [email, setEmail] = useState<string>('')
+  const [email, setEmail] = useState<any>('')
   const [submitted, setSubmitted] = useState(false)
 
   const emailRef = useRef<any>(null)
