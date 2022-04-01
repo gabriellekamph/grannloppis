@@ -1,16 +1,15 @@
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import AddSeller from "../components/AddSeller"
-import MapContainer from "../components/MapContainer"
 import React, { useEffect, useState, useContext } from "react"
 import { isSignInWithEmailLink, onAuthStateChanged, signInWithEmailLink } from "firebase/auth"
 import { auth } from "../firebase"
 import { AuthContext } from '../context/AuthProvider'
+import Map from "../components/Map"
 
 const Area = () => {
 
   const { user } = useContext(AuthContext)
-
 
   if (typeof window !== "undefined") {
 
@@ -32,7 +31,7 @@ const Area = () => {
     <>
       <Header />
       {user ? <AddSeller /> : null}
-      <MapContainer />
+      <Map />
       <Footer />
     </>
   );
