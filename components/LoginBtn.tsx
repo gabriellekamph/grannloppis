@@ -21,11 +21,11 @@ const LoginBtn = () => {
     e.preventDefault();
     const email: any = emailRef.current.value
     const actionCodeSettings = {
-      // url: window.location.href,
-      url: `https://grannloppis.vercel.com/${area}/login/`,
-      //url: 'https://test-diveboard.firebaseapp.com',
+      url: window.location.href,
+      // url: `https://grannloppis.vercel.com/${area}/login/`,
       handleCodeInApp: true,
     }
+
     sendSignInLinkToEmail(auth, email, actionCodeSettings)
       .then(() => {
         console.log("E-postlänk skickad");
@@ -58,8 +58,9 @@ const LoginBtn = () => {
           <>
         <div className="container max-w-sm h-auto bg-white mx-auto text-black p-5 m-5 flex overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-md px-5">
             <form>
-              <h1 className="font-bold text-lg">Logga in</h1>
-              <p>Fyll i din e-postadress för att få en inloggningslänk. </p>
+              <h1 className="font-bold text-lg mb-3">Logga in</h1>
+              <p>Fyll i din e-postadress för att få en inloggningslänk skickad till dig. <br /><br />
+              När du har verifierat dig via länken kan du lägga till dig själv som säljare på loppiskartan. </p>
               <input
                 ref={emailRef}
                 value={email}

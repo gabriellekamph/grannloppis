@@ -30,7 +30,7 @@ const AddSeller = () => {
     console.log("Data sent to database")
     
   }
-
+ 
   const handleChecked = (e: any) => {
     let updatedArray = [...categories]
     if (e.target.checked) {
@@ -49,7 +49,7 @@ const AddSeller = () => {
     .then(results => getLatLng(results[0]))
     .then(({ lat, lng }) => {
       console.log('Successfully got latitude and longitude', { lat, lng })
-      setlocation({ lat, lng })
+      setlocation({ lat: Number(lat), lng: Number(lng) })
     })
   }
 
