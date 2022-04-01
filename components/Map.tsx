@@ -27,7 +27,7 @@ const Map = () => {
   // Fetch data from firebase and store in sellers state
 
   const fetchSellers = async () => {
-    const q = await query(collection(db, "sellers"));
+    const q = await query(collection(db, "sellers"))
 
     const getData = onSnapshot(q, (querySnapshot) => {
       let allSellers: any = [];
@@ -58,7 +58,7 @@ const Map = () => {
         center: defaultCenter,
         zoom: 15,
         styles: hidePois,
-      });
+      })
 
       // Show markers on map from firebase data
 
