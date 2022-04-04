@@ -67,7 +67,7 @@ const AddSeller = () => {
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Anmäl dig som säljare
+        Lägg till dig som säljare
       </button>
     </div>
       {showModal ? (
@@ -76,7 +76,7 @@ const AddSeller = () => {
               <div className="container max-w-lg bg-white p-5 rounded-lg px-5">
                 <div className="container w-auto mb-8">
                   <h3 className="text-3xl font-semibold text-black mb-3">
-                    Anmäl dig som säljare
+                    Lägg till dig som säljare
                   </h3>
                   <p className="text-sm text-black">Vad roligt att du vill vara med och sälja på loppisen! Fyll i din adress, välj vilken typ av varor du säljer och tryck på Spara för att läggas till på loppiskartan.</p>
                 </div>

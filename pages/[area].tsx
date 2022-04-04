@@ -43,7 +43,8 @@ const Area = () => {
   return (
     <>
       <Header />
-      {user && !activeSeller ? <AddSeller /> : <RemoveSeller />}
+      {user && !activeSeller ? <AddSeller /> : null}
+      {user && activeSeller ? <RemoveSeller /> : null}
       <Map />
       <Footer />
     </>
