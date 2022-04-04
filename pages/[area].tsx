@@ -6,6 +6,7 @@ import { isSignInWithEmailLink, onAuthStateChanged, signInWithEmailLink } from "
 import { auth } from "../firebase"
 import { AuthContext } from '../context/AuthProvider'
 import Map from '../components/Map'
+import RemoveSeller from "../components/RemoveSeller"
 
 const Area = () => {
 
@@ -31,6 +32,7 @@ const Area = () => {
     <>
       <Header />
       {user ? <AddSeller /> : null}
+      {user ? <RemoveSeller /> : null}
       <Map />
       <Footer />
     </>
