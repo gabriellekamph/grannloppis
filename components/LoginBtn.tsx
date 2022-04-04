@@ -52,7 +52,7 @@ const LoginBtn = () => {
           type="button"
           onClick={() => setShowModal(!showModal)}
         >
-          Jag vill vara med och sälja
+          Logga in
         </button>
       </div>
 
@@ -60,9 +60,10 @@ const LoginBtn = () => {
           <>
         <div className="container max-w-sm h-auto bg-white mx-auto text-black p-5 m-5 flex overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-md px-5">
             <form>
-              <h1 className="font-bold text-lg mb-3">Vill du vara med och sälja på loppisen?</h1>
-              <p>Fyll i din e-postadress för att få en verifieringslänk skickad till dig. <br /><br />
-              När du har verifierat dig genom att klicka på länken kan du enkelt lägga till dig själv som säljare på loppiskartan. </p>
+              <h1 className="font-bold text-lg mb-3">Logga in</h1>
+              <p>Här på Grannloppis behöver du inte komma ihåg några lösenord.
+                 Fyll bara i din e-postadress så får du en inloggningslänk skickad till dig. <br /><br />
+              När du har loggat in genom att klicka på länken kan du enkelt lägga till eller ta bort dig själv som säljare på loppiskartan. </p>
               <input
                 ref={emailRef}
                 value={email}
@@ -95,7 +96,7 @@ const LoginBtn = () => {
           <>
         <div className="container max-w-min h-auto bg-white mx-auto text-black p-5 m-5 flex flex-col overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-md px-5">
           <p>
-            Verifieringslänk skickad <Emoji symbol="🎉" />
+            Inloggningslänk skickad <Emoji symbol="🎉" />
           </p>
           <button
             className="bg-emerald-500 w-32 text-black active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-10 ml-10 mt-5 mb-1 ease-linear transition-all duration-150"

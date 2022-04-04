@@ -37,12 +37,13 @@ const Header = () => {
           </a>
         </Link>
       <div>
-      {!!user ? null : <LoginBtn /> }
+      {!!user ? <button onClick={() => {signOut(auth)}}>Logga ut</button> : <LoginBtn /> }
       </div>
       </div>
         <h1 className="text-5xl font-bold uppercase text-center">{area}</h1>
+
         <p className="text-center">
-          { !!user ? `${currentUser}` : ''}
+          { !!user ? `${currentUser}` : 'Logga in för att lägga till eller ta bort dig själv från loppiskartan.'}
         </p>
     </div>
   )
