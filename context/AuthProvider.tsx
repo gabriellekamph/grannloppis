@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react"
 import { auth } from "../firebase"
-import { isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth"
-import { firebaseApp } from '../firebase'
 
 type ContextProps = {
     user: null
@@ -9,6 +7,8 @@ type ContextProps = {
     setUser: any
     loadingAuthState: boolean
 }
+
+// Provider to handle authentication status with Firebase
 
 export const AuthContext = React.createContext<Partial<ContextProps>>({})
 export const AuthProvider = ({ children }: any) => {
@@ -22,23 +22,6 @@ export const AuthProvider = ({ children }: any) => {
     })
 
   }, [])
-
-  if (typeof window !== "undefined") {
-
-    if (isSignInWithEmailLink(auth, window.location.href)) {
-
-      let email: any = window.localStorage.getItem('emailForSignIn');
-
-      // signInWithEmailLink(auth, email, window.location.href)
-      //   .then((result) => {
-      //     console.log(result.user)
-      //     console.log(result.user.email)
-      //   })
-      //   .catch((error) => {
-         
-      //   })
-    }
-  }
 
   return (
     <AuthContext.Provider

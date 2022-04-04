@@ -1,25 +1,32 @@
 import Link from "next/link"
-import { UserIcon, ArrowNarrowLeftIcon } from "@heroicons/react/solid"
+import { ArrowNarrowLeftIcon } from "@heroicons/react/solid"
 import { useRouter } from "next/router"
 import LoginBtn from "./LoginBtn"
 import { useState, useEffect, useContext } from 'react'
 import { auth } from '../firebase'
-import { signOut } from 'firebase/auth'
 import { AuthContext } from '../context/AuthProvider'
+import { signOut } from 'firebase/auth'
+import { SellerContext } from '../context/SellerContext'
 
 const Header = () => {
   const router = useRouter()
   const { area } = router.query
   const { user } = useContext(AuthContext)
 
-  const handleLogout = (e: any) => {
+  const [currentUser, setCurrentUser] = useState('')
 
-    e.preventDefault();
-    signOut(auth);
-    localStorage.removeItem('emailForSignIn')
-    console.log('Utloggad')
+  const { activeSeller, setActiveSeller } = useContext<any>(SellerContext)
 
-  }
+  useEffect(() => {
+    const getCurrentUser:any= localStorage.getItem('emailForSignIn')
+    setCurrentUser(getCurrentUser)
+
+    // Sign out from Firebase if no user is saved in local storage
+
+    if (localStorage.getItem('emailForSignIn') === null) {
+      signOut(auth)
+    }
+  }, [])
 
   return (
     <div className="container flex justify-between p-2 flex flex-col">
@@ -29,12 +36,13 @@ const Header = () => {
             <ArrowNarrowLeftIcon className="h-8 w-8" />
           </a>
         </Link>
-
-        {!!user ? (<><UserIcon className="h-8 w-8" /> <button type="button" onClick={handleLogout}>Logga ut</button></>) : (<LoginBtn />) }
+      <div>
+      {!!user ? null : <LoginBtn /> }
+      </div>
       </div>
         <h1 className="text-5xl font-bold uppercase text-center">{area}</h1>
         <p className="text-center">
-          { !!user ? `Inloggad` : 'Logga in för att anmäla dig som säljare på loppisen'}
+          { !!user ? `${currentUser}` : ''}
         </p>
     </div>
   )
