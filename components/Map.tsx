@@ -92,12 +92,11 @@ const Map = () => {
       })
       }
 
-      
     });
   });
 
   return (
-    <div className="map-container text-black">
+    <div className="map-container text-black mt-6">
       <div id="map" ref={googleMap} />
     </div>
   );

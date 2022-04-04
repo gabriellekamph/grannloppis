@@ -5,7 +5,7 @@ import React, { useEffect, useState, useContext } from "react"
 import { isSignInWithEmailLink, onAuthStateChanged, signInWithEmailLink } from "firebase/auth"
 import { auth } from "../firebase"
 import { AuthContext } from '../context/AuthProvider'
-import Map from "../components/Map"
+import Map from '../components/Map'
 
 const Area = () => {
 
