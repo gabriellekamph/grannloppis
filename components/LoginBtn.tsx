@@ -26,6 +26,8 @@ const LoginBtn = () => {
       handleCodeInApp: true,
     }
 
+    // Send validation link to users email address
+
     sendSignInLinkToEmail(auth, email, actionCodeSettings)
       .then(() => {
         console.log("E-postlänk skickad");

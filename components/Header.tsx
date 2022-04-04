@@ -6,6 +6,7 @@ import { useState, useEffect, useContext } from 'react'
 import { auth } from '../firebase'
 import { AuthContext } from '../context/AuthProvider'
 import { signOut } from 'firebase/auth'
+import { SellerContext } from '../context/SellerContext'
 
 const Header = () => {
   const router = useRouter()
@@ -14,18 +15,18 @@ const Header = () => {
 
   const [currentUser, setCurrentUser] = useState('')
 
+  const { activeSeller, setActiveSeller } = useContext<any>(SellerContext)
+
   useEffect(() => {
     const getCurrentUser:any= localStorage.getItem('emailForSignIn')
     setCurrentUser(getCurrentUser)
-    console.log(currentUser)
+
+    // Sign out from Firebase if no user is saved in local storage
 
     if (localStorage.getItem('emailForSignIn') === null) {
-      console.log("No user in local storage so sign out from firebase auth")
-      signOut(auth);
+      signOut(auth)
     }
   }, [])
-
-
 
   return (
     <div className="container flex justify-between p-2 flex flex-col">
