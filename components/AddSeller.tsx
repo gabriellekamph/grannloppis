@@ -1,14 +1,15 @@
-import React, { useState} from "react"
+import React, { useState, useContext } from "react"
 import { db } from "../firebase"
 import { collection, serverTimestamp, addDoc } from "firebase/firestore"
 import GooglePlacesAutocomplete, {geocodeByAddress, getLatLng} from 'react-google-places-autocomplete'
 import { v4 as uuidv4 } from 'uuid'
 
 const AddSeller = () => {
+
+
   const [showModal, setShowModal] = useState(false)
 
   const [id, setId] = useState<any>(null)
-  // const [email, setEmail] = useState<any>('')
   const [address, setAddress] = useState<string|any>('')
   const [categories, setCategories] = useState<string[]>([])
   const [info, setInfo] = useState<string>('')
@@ -30,7 +31,8 @@ const AddSeller = () => {
     })
     setShowModal(false)
     console.log("Data sent to database")
-    
+    localStorage.setItem('activeSeller', 'yes')
+
   }
  
   const handleChecked = (e: any) => {

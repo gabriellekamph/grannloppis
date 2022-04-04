@@ -2,7 +2,7 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import AddSeller from "../components/AddSeller"
 import React, { useEffect, useState, useContext } from "react"
-import { isSignInWithEmailLink, onAuthStateChanged, signInWithEmailLink } from "firebase/auth"
+import { isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth"
 import { auth } from "../firebase"
 import { AuthContext } from '../context/AuthProvider'
 import Map from '../components/Map'
@@ -11,6 +11,20 @@ import RemoveSeller from "../components/RemoveSeller"
 const Area = () => {
 
   const { user } = useContext(AuthContext)
+
+  const [activeSeller, setActiveSeller] = useState<boolean>(false)
+
+
+  useEffect(() => {
+
+    let active;
+    if (localStorage.getItem('activeSeller') === 'yes') {
+      active = true;
+      setActiveSeller(active)
+    } else {
+      active = false;
+    }
+  }, [])
 
   if (typeof window !== "undefined") {
 
@@ -31,8 +45,7 @@ const Area = () => {
   return (
     <>
       <Header />
-      {user ? <AddSeller /> : null}
-      {user ? <RemoveSeller /> : null}
+      {user && !activeSeller ? <AddSeller /> : <RemoveSeller />}
       <Map />
       <Footer />
     </>

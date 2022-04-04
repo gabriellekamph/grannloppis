@@ -3,6 +3,8 @@ import { db } from "../firebase"
 import { collection, deleteDoc, query, where, getDocs } from "firebase/firestore"
 
 const RemoveSeller = () => {
+
+    const [activeSeller, setActiveSeller] = useState(false)
     
     const removeSeller = async () => {
         const sellersRef = collection(db, "sellers")
@@ -15,6 +17,9 @@ const RemoveSeller = () => {
         console.log(doc.id, " => ", doc.data());
         deleteDoc(doc.ref)
         })
+
+        localStorage.removeItem('activeSeller')
+        setActiveSeller(false)
     }
 
     return (
