@@ -1,14 +1,21 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { db } from "../firebase"
+import { collection, deleteDoc, query, where, getDocs } from "firebase/firestore"
 
 const RemoveSeller = () => {
+    
+    const removeSeller = async () => {
+        const sellersRef = collection(db, "sellers")
 
-    const [activeSeller, setActiveSeller] = useState<boolean>(false)
+        const q:any = query(sellersRef, where("email", "==", "gabrielle.kamph@gmail.com"))
 
-    const removeSeller = () => {
-        console.log("remove seller from map")
+        const querySnapshot = await getDocs(q);
+
+        querySnapshot.forEach((doc:any) => {
+        console.log(doc.id, " => ", doc.data());
+        deleteDoc(doc.ref)
+        })
     }
-
-
 
     return (
         <div className="w-full flex justify-center mt-4">
