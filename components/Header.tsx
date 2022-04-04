@@ -2,6 +2,7 @@ import Link from "next/link"
 import { ArrowNarrowLeftIcon } from "@heroicons/react/solid"
 import { useRouter } from "next/router"
 import LoginBtn from "./LoginBtn"
+import LogoutBtn from './LogoutBtn'
 import { useState, useEffect, useContext } from 'react'
 import { auth } from '../firebase'
 import { AuthContext } from '../context/AuthProvider'
@@ -37,7 +38,7 @@ const Header = () => {
           </a>
         </Link>
       <div>
-      {!!user ? <button onClick={() => {signOut(auth)}}>Logga ut</button> : <LoginBtn /> }
+      {!!user ? <LogoutBtn /> : <LoginBtn /> }
       </div>
       </div>
         <h1 className="text-5xl font-bold uppercase text-center">{area}</h1>
