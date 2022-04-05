@@ -1,5 +1,4 @@
 import Header from "../components/Header"
-import Footer from "../components/Footer"
 import AddSeller from "../components/AddSeller"
 import React, { useEffect, useContext } from "react"
 import { isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth"
@@ -46,7 +45,6 @@ const Area = () => {
       {user && !activeSeller ? <AddSeller /> : null}
       {user && activeSeller ? <RemoveSeller /> : null}
       <Map />
-      <Footer />
     </>
   );
 };

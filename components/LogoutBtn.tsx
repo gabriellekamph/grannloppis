@@ -12,7 +12,7 @@ const LogoutBtn = () => {
 
     return (
         <>
-        <button onClick={logout}>LOGGA UT</button>
+        <button onClick={logout}>Logga ut</button>
         </>
     )
 }

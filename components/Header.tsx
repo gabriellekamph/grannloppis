@@ -41,7 +41,7 @@ const Header = () => {
       {!!user ? <LogoutBtn /> : <LoginBtn /> }
       </div>
       </div>
-        <h1 className="text-4xl font-bold uppercase text-center mb-3">{area}</h1>
+        <h1 className="text-4xl font-bold uppercase text-center mb-1">{area}</h1>
 
         <p className="text-center text-sm">
           { !!user ? `${currentUser}` : 'Logga in för att lägga till eller ta bort dig själv från loppiskartan.'}
