@@ -1,9 +1,7 @@
 import { auth } from '../firebase'
-import { AuthContext } from '../context/AuthProvider'
 import { signOut } from 'firebase/auth'
 
-
-// Logout button here with modal telling new confirmation link must be sent to login again
+// Logout button with modal telling new confirmation link must be sent to login again
 
 const LogoutBtn = () => {
 

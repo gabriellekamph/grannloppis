@@ -63,7 +63,7 @@ const AddSeller = () => {
     <>
     <div className="w-full flex justify-center mt-4">
     <button
-        className="text-white hover:bg-pink-600 text-md px-6 py-3 rounded-md px-4 py-3 border-solid border-2 border-white-200 hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
+        className="text-white hover:bg-pink-600 text-sm px-6 py-3 rounded-md px-4 py-3 border-solid border-2 border-white-200 hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
         onClick={() => setShowModal(true)}
       >
@@ -74,15 +74,15 @@ const AddSeller = () => {
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none m-5">
               <div className="container max-w-lg bg-white p-5 rounded-lg px-5">
-                <div className="container w-auto mb-8">
-                  <h3 className="text-3xl font-semibold text-black mb-3">
+                <div className="container w-auto mb-5">
+                  <h3 className="text-2xl font-semibold text-black mb-2">
                     Lägg till dig som säljare
                   </h3>
                   <p className="text-sm text-black">Vad roligt att du vill vara med och sälja på loppisen! Fyll i din adress, välj vilken typ av varor du säljer och tryck på Spara för att läggas till på loppiskartan.</p>
                 </div>
-                <div className="container w-auto text-black">
+                <div className="container w-auto text-black text-sm">
                   <form onSubmit={addSeller} className="text-black">
-                    <div className="flex w-full flex-wrap items-stretch mb-3">
+                    <div className="flex w-full flex-wrap items-stretch mb-2">
                       <label htmlFor="address">
                         Vilken adress säljer du från?
                       </label>
@@ -98,8 +98,8 @@ const AddSeller = () => {
                       </div>
                     </div>
 
-                    <div className="relative flex w-96 flex-wrap flex-col items-stretch mb-3 pt-3">
-                      <label htmlFor="address">Vad säljer du?</label>
+                    <div className="relative flex w-96 flex-wrap flex-col items-stretch mb-3 pt-1">
+                      <label htmlFor="address" className="mb-2">Vad säljer du?</label>
                       <div className="flex justify-between mr-16">
                         <div className="flex flex-col">
                           <label htmlFor="categories1" className="mr-3">

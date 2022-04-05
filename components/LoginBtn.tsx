@@ -48,7 +48,7 @@ const LoginBtn = () => {
     <>
       <div className="w-full flex justify-end text-black">
         <button
-          className="text-white hover:bg-pink-600 text-md rounded-md px-4 border-solid border-2 border-white-200 hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
+          className="text-white hover:bg-pink-600 text-sm rounded-md px-4 border-solid border-2 border-white-200 hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
           type="button"
           onClick={() => setShowModal(!showModal)}
         >
@@ -60,10 +60,8 @@ const LoginBtn = () => {
           <>
         <div className="container max-w-sm h-auto bg-white mx-auto text-black p-5 m-5 flex overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-md px-5">
             <form>
-              <h1 className="font-bold text-lg mb-3">Logga in</h1>
-              <p>Här på Grannloppis behöver du inte komma ihåg några lösenord.
-                 Fyll bara i din e-postadress så får du en inloggningslänk skickad till dig. <br /><br />
-              När du har loggat in genom att klicka på länken kan du enkelt lägga till eller ta bort dig själv som säljare på loppiskartan. </p>
+              <h1 className="font-bold text-md mb-3">Logga in</h1>
+              <p className="text-sm">Fyll i din e-postadress för att få en inloggningslänk skickad till dig. När du har loggat in genom att klicka på länken kan du enkelt lägga till eller ta bort dig själv som säljare på loppiskartan. </p>
               <input
                 ref={emailRef}
                 value={email}
@@ -95,7 +93,7 @@ const LoginBtn = () => {
       ) : showModal && submitted ? (
           <>
         <div className="container max-w-min h-auto bg-white mx-auto text-black p-5 m-5 flex flex-col overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-md px-5">
-          <p>
+          <p className="text-sm text-center">
             Inloggningslänk skickad <Emoji symbol="🎉" />
           </p>
           <button
