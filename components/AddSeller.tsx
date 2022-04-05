@@ -78,7 +78,7 @@ const AddSeller = () => {
                   <h3 className="text-2xl font-semibold text-black mb-2">
                     Lägg till dig som säljare
                   </h3>
-                  <p className="text-sm text-black">Vad roligt att du vill vara med och sälja på loppisen! Fyll i din adress, välj vilken typ av varor du säljer och tryck på Spara för att läggas till på loppiskartan.</p>
+                  <p className="text-sm text-black">Vad roligt att du vill vara med och sälja på loppisen! Fyll i din adress, vilken typ av varor du säljer och spara för att läggas till på loppiskartan.</p>
                 </div>
                 <div className="container w-auto text-black text-sm">
                   <form onSubmit={addSeller} className="text-black">
@@ -100,7 +100,7 @@ const AddSeller = () => {
 
                     <div className="relative flex w-96 flex-wrap flex-col items-stretch mb-3 pt-1">
                       <label htmlFor="address" className="mb-2">Vad säljer du?</label>
-                      <div className="flex justify-between mr-16">
+                      <div className="flex justify-between mr-20">
                         <div className="flex flex-col">
                           <label htmlFor="categories1" className="mr-3">
                             <input
@@ -240,7 +240,7 @@ const AddSeller = () => {
                     </div>
                   </form>
                 </div>
-                <div className="flex items-center text-black justify-end pt-6">
+                <div className="flex items-center text-black justify-end pt-4">
                   <button
                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"

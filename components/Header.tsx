@@ -30,11 +30,11 @@ const Header = () => {
   }, [])
 
   return (
-    <div className="container flex justify-between p-2 flex flex-col">
+    <div className="container flex justify-between p-1 flex flex-col">
       <div className="container flex justify-between mb-8 p-3">
       <Link href="/">
           <a>
-            <ArrowNarrowLeftIcon className="h-8 w-8" />
+            <ArrowNarrowLeftIcon className="h-7 w-8" />
           </a>
         </Link>
       <div>
