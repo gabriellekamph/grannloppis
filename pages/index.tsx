@@ -1,5 +1,4 @@
 import type { NextPage } from "next"
-import Footer from "../components/Footer"
 import DropDown from "../components/DropDown"
 import React from "react"
 
@@ -10,7 +9,6 @@ const Home: NextPage = () => {
         <img src="/logos/grannloppis_logo.png" alt="Grannloppis logotype" width="500" className="mx-auto" />
         <DropDown />
       </div>
-      <Footer />
     </>
   )
 }

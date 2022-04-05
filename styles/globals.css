@@ -35,7 +35,7 @@ a:hover {
   body {
     background-color: theme('colors.raspberry');
     color: theme('colors.white');
-    font-size: medium;
+    font-size: 14px;
   }
 }
 
@@ -45,7 +45,7 @@ a:hover {
 
 .map-container {
   position: relative;
-  padding-bottom: 70vh;
+  padding-bottom: 60vh;
   padding-top: 30px;
   height: 0;
   overflow: hidden;
