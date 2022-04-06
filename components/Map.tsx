@@ -67,6 +67,9 @@ const Map = () => {
         const seller = sellers[i]
         const lat = parseFloat(seller.location.lat)
         const lng = parseFloat(seller.location.lng)
+        const address = seller.address
+        const categories = seller.categories
+        const info = seller.info
 
         // Create markers from fetched coordinates and display on map
 
@@ -81,10 +84,11 @@ const Map = () => {
 
         // Info about selected seller to display in infowindow
 
-        const sellerInfo = `<div class="content">
-                <p><strong>${seller.address}</strong><br /></p>
-                <p>${seller.categories.join(', ')}</p><br />
-                <p>${seller.info}</p>
+        const sellerInfo = `<div>
+                <p style="line-height:2"><strong>${address}</strong><br />
+                ${categories.join(', ')} <br />
+                <i>${info}</i>
+                </p>
                 </div>`
 
         // Close current info window if a new marker is clicked
