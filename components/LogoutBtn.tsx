@@ -14,7 +14,9 @@ const LogoutBtn = () => {
 
   return (
     <>
-      <button onClick={() => setShowModal(!showModal)}>Logga ut</button>
+      <button onClick={() => setShowModal(!showModal)}>
+        <p className="link link-underline">Logga ut</p>
+      </button>
 
       {showModal ? (
         <>

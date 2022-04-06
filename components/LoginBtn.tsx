@@ -47,7 +47,7 @@ const LoginBtn = () => {
         <button
           type="button"
           onClick={() => setShowModal(!showModal)}>
-          Logga in
+        <p className="link link-underline">Logga in</p>
         </button>
       </div>
 
