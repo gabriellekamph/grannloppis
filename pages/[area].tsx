@@ -11,6 +11,9 @@ import { SellerContext } from '../context/SellerContext'
 const Area = () => {
 
   const { user } = useContext(AuthContext)
+  const { loadingAuthState } = useContext(AuthContext)
+
+
   const { activeSeller, setActiveSeller } = useContext<any>(SellerContext)
 
   // Check if user is registered as active seller in local storage
@@ -27,6 +30,7 @@ const Area = () => {
   if (typeof window !== "undefined") {
 
     if (isSignInWithEmailLink(auth, window.location.href)) {
+
       let email: any = window.localStorage.getItem('emailForSignIn')
 
       signInWithEmailLink(auth, email, window.location.href)
