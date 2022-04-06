@@ -6,7 +6,10 @@ import { db } from '../firebase'
 const Map = () => {
   const [sellers, setSellers] = useState<any>([])
 
+  const [isChecked, setIsChecked] = useState<boolean>(true)
+
   const googleMap: any = useRef(null)
+  let markers:any = []
 
   const hidePois = [
     {
@@ -49,6 +52,8 @@ const Map = () => {
     let map: any
     let currentInfoWindow: any = ''
 
+    let marker:any;
+
     loader.load().then(() => {
       const google = window.google
       const defaultCenter = { lat: 59.23146869560826, lng: 18.247962069565833 }
@@ -73,10 +78,12 @@ const Map = () => {
 
         // Create markers from fetched coordinates and display on map
 
-        let marker = new google.maps.Marker({
+        marker = new google.maps.Marker({
           position: { lat: lat, lng: lng },
           map,
         })
+
+        markers.push(marker)
 
         // Create info window
 
@@ -114,10 +121,45 @@ const Map = () => {
     })
   })
 
+
+  const handleCheck = (e:any) => {
+    
+    for (var i=0; i<sellers.length; i++) {
+
+      if (sellers[i].categories.includes(e.target.id)) {
+        if (!e.target.checked) {
+          markers[i].setVisible(false)
+        } else {
+          markers[i].setVisible(true)
+        }
+      } 
+
+    }
+
+
+    
+  }
+
   return (
+    <>
+    <fieldset id="form">
+    <p>
+    <input className="checkbox" id="Inredning" name="Inredning" type="checkbox" value="Inredning" defaultChecked={isChecked} onChange={handleCheck} />
+    <label htmlFor="Inredning">Inredning</label>
+    </p>
+    <p>
+    <input className="checkbox" id="Kaffe/Fika" name="Kaffe/Fika" type="checkbox" value="Kaffe/Fika" defaultChecked={isChecked} onChange={handleCheck} />
+    <label htmlFor="Kaffe/Fika">Kaffe/Fika</label>
+    </p>
+    <p>
+    <input className="checkbox" id="Möbler" name="Möbler" type="checkbox" value="Möbler" defaultChecked={isChecked} onChange={handleCheck} />
+    <label htmlFor="Möbler">Möbler</label>
+    </p>
+</fieldset>
     <div className="map-container text-black mt-6">
       <div id="map" ref={googleMap} />
     </div>
+    </>
   )
 }
 
