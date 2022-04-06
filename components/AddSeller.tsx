@@ -77,9 +77,9 @@ const AddSeller = () => {
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none m-5">
             <div className="container max-w-lg bg-white p-5 rounded-lg px-5">
               <div className="container w-auto mb-5">
-                <h3 className="text-2xl font-semibold text-black mb-2">
+                <p className="text-xl font-semibold text-black mb-2">
                   Lägg till dig som säljare
-                </h3>
+                </p>
                 <p className="text-sm text-black">
                   Vad roligt att du vill vara med och sälja på loppisen! Fyll i din
                   adress, vilken typ av varor du säljer och spara för att läggas till på
@@ -96,6 +96,15 @@ const AddSeller = () => {
                           address,
                           onChange: handleChange,
                           placeholder: 't.ex. Krusboda Torgväg 1',
+                        }}
+                        autocompletionRequest={{
+                          bounds: [
+                            { lat: 50, lng: 50 },
+                            { lat: 100, lng: 100 }
+                          ],
+                          componentRestrictions: {
+                          country: ['sv', 'se'],
+                          }
                         }}
                       />
                     </div>
