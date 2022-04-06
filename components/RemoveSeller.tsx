@@ -51,16 +51,16 @@ const RemoveSeller = () => {
               <h1 className="text-md text-center text-center">
                 Är du säker på att du vill ta bort dig som säljare från loppiskartan?
               </h1>
-              <div className="flex items-center justify-center text-black pt-6">
+              <div className="flex items-center justify-center text-black pt-6 gap-5">
                 <button
-                  className="text-red-500 background-transparent font-bold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  className="font-bold px-6 py-3 rounded shadow hover:shadow-lg mr-1 mb-1 transition-all duration-150"
                   type="button"
                   onClick={() => setShowModal(false)}
                 >
                   Avbryt
                 </button>
                 <button
-                  className="bg-emerald-500 text-black active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  className="active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
                   type="button"
                   onClick={removeConfirmed}
                 >
