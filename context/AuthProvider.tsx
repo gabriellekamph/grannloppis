@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react"
-import { auth } from "../firebase"
+import React, { useEffect, useState } from 'react'
+import { auth } from '../firebase'
 
 type ContextProps = {
-    user: null
-    authenticated: boolean
-    setUser: any
-    loadingAuthState: boolean
+  user: null
+  authenticated: boolean
+  setUser: any
+  loadingAuthState: boolean
 }
 
 // Provider to handle authentication status with Firebase
@@ -16,11 +16,10 @@ export const AuthProvider = ({ children }: any) => {
   const [loadingAuthState, setLoadingAuthState] = useState(true)
 
   useEffect(() => {
-      auth.onAuthStateChanged((user: any) => {
-        setUser(user);
-        setLoadingAuthState(false);
+    auth.onAuthStateChanged((user: any) => {
+      setUser(user)
+      setLoadingAuthState(false)
     })
-
   }, [])
 
   return (
@@ -29,9 +28,9 @@ export const AuthProvider = ({ children }: any) => {
         user,
         authenticated: user !== null,
         setUser,
-        loadingAuthState
+        loadingAuthState,
       }}>
-        {children} 
+      {children}
     </AuthContext.Provider>
   )
 }
