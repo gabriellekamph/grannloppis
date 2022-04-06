@@ -43,9 +43,8 @@ const LoginBtn = () => {
 
   return (
     <>
-      <div className="w-full flex justify-end text-black">
+      <div className="w-full flex justify-end">
         <button
-          className="text-white hover:bg-pink-600 text-sm rounded-md px-4 border-solid border-2 border-white-200 hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
           type="button"
           onClick={() => setShowModal(!showModal)}>
           Logga in
@@ -54,7 +53,7 @@ const LoginBtn = () => {
 
       {showModal && !submitted ? (
         <>
-          <div className="container max-w-sm h-auto bg-white mx-auto text-black p-5 m-5 flex overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-md px-5">
+          <div className="container max-w-xs h-auto bg-white mx-auto text-black p-5 m-5 flex overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-md px-5">
             <form>
               <h1 className="font-bold text-md mb-3">Logga in</h1>
               <p className="text-sm">
@@ -72,13 +71,13 @@ const LoginBtn = () => {
               />
               <div className="flex items-center text-black justify-end pt-6">
                 <button
-                  className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  className="text-red-500 background-transparent font-bold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                   type="button"
                   onClick={() => setShowModal(false)}>
                   Avbryt
                 </button>
                 <button
-                  className="bg-emerald-500 text-black active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  className="bg-emerald-500 text-black active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                   type="button"
                   onClick={login}>
                   Skicka länk
@@ -95,7 +94,7 @@ const LoginBtn = () => {
               Inloggningslänk skickad <Emoji symbol="🎉" />
             </p>
             <button
-              className="bg-emerald-500 w-32 text-black active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-10 ml-10 mt-5 mb-1 ease-linear transition-all duration-150"
+              className="bg-emerald-500 w-32 text-black active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-10 ml-10 mt-5 mb-1 ease-linear transition-all duration-150"
               type="button"
               onClick={() => {
                 setShowModal(false), setSubmitted(false)

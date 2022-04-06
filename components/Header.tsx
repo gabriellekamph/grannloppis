@@ -46,7 +46,7 @@ const Header = () => {
         <h1 className="text-4xl font-bold uppercase text-center mb-1">{area}</h1>
 
         {loadingAuthState ? null : (
-          <p className="text-center text-sm">
+          <p className="container mx-auto text-center text-sm w-11/12">
             {user
               ? `${currentUser}`
               : 'Logga in för att lägga till eller ta bort dig själv från loppiskartan.'}
