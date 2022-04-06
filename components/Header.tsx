@@ -10,17 +10,20 @@ import { signOut } from "firebase/auth"
 import { SellerContext } from "../context/SellerContext"
 
 const Header = () => {
-  const router = useRouter()
-  const { area } = router.query
-  const { user } = useContext(AuthContext)
-  const { loadingAuthState } = useContext(AuthContext)
+  const router = useRouter();
+  const { area } = router.query;
+  const { user } = useContext(AuthContext);
+  const { loadingAuthState } = useContext(AuthContext);
 
-  const [currentUser, setCurrentUser] = useState('')
+  const [currentUser, setCurrentUser] = useState("");
 
-  const { activeSeller, setActiveSeller } = useContext<any>(SellerContext)
+  const { activeSeller, setActiveSeller } = useContext<any>(SellerContext);
 
   useEffect(() => {
-    const getCurrentUser: any = localStorage.getItem("emailForSignIn")
+
+    // Get email for current user from local storage
+    
+    const getCurrentUser: any = localStorage.getItem("emailForSignIn");
     setCurrentUser(getCurrentUser)
 
     // Sign out from Firebase if no user is saved in local storage
@@ -32,29 +35,29 @@ const Header = () => {
 
   return (
     <>
-      {loadingAuthState ? (
-        null
-      ) : (
-        <div className="container flex justify-between p-1 flex flex-col">
-          <div className="container flex justify-between mb-8 p-3">
-            <Link href="/">
-              <a>
-                <ArrowNarrowLeftIcon className="h-7 w-8" />
-              </a>
-            </Link>
-            <div>{!!user ? <LogoutBtn /> : <LoginBtn />}</div>
-          </div>
-          <h1 className="text-4xl font-bold uppercase text-center mb-1">
-            {area}
-          </h1>
+      <div className="container flex justify-between p-1 flex flex-col">
+        <div className="container flex justify-between mb-8 p-3">
+          <Link href="/">
+            <a>
+              <ArrowNarrowLeftIcon className="h-7 w-8" />
+            </a>
+          </Link>
+          {loadingAuthState ? null : (
+            <div>{user ? <LogoutBtn /> : <LoginBtn />}</div>
+          )}
+        </div>
+        <h1 className="text-4xl font-bold uppercase text-center mb-1">
+          {area}
+        </h1>
 
+        {loadingAuthState ? null : (
           <p className="text-center text-sm">
-            {!!user
+            {user
               ? `${currentUser}`
               : "Logga in för att lägga till eller ta bort dig själv från loppiskartan."}
           </p>
-        </div>
-      )}
+        )}
+      </div>
     </>
   )
 }
