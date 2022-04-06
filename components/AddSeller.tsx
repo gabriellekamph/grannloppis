@@ -238,20 +238,20 @@ const AddSeller = () => {
                       type="text"
                       onChange={(e) => setInfo(e.target.value)}
                       placeholder="t.ex. särskilda öppettider"
-                      className="py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm outline-none border border-blueGray-300 focus:outline-none focus:ring w-full pr-10 pl-3 mt-3"
+                      className="py-3 placeholder-blueGray-300 relative bg-white rounded border border-blueGray-300 focus:ring w-full pr-10 pl-3 mt-3"
                     />
                   </div>
                 </form>
               </div>
-              <div className="flex items-center text-black justify-end pt-4">
+              <div className="flex items-center text-black justify-end pt-4 gap-5">
                 <button
-                  className="text-red-500 background-transparent font-bold px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  className="font-bold px-6 py-3 rounded shadow hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
                   type="button"
                   onClick={() => setShowModal(false)}>
                   Avbryt
                 </button>
                 <button
-                  className="bg-emerald-500 text-black active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  className="font-bold px-6 py-3 rounded shadow hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
                   type="button"
                   onClick={addSeller}>
                   Spara

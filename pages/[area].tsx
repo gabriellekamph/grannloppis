@@ -40,10 +40,16 @@ const Area = () => {
 
   return (
     <>
-      <Header />
+    { loadingAuthState ? null : (
+      <>
+            <Header />
       {user && !activeSeller ? <AddSeller /> : null}
       {user && activeSeller ? <RemoveSeller /> : null}
       <Map />
+      </>
+
+    )}
+
     </>
   )
 }
