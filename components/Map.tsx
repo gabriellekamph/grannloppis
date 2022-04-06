@@ -47,10 +47,13 @@ const Map = () => {
     })
 
     let map: any
+    let currentInfoWindow: any = ''
 
     loader.load().then(() => {
       const google = window.google
       const defaultCenter = { lat: 59.23146869560826, lng: 18.247962069565833 }
+
+      // Create a map with coordinates for Krusboda (stored in the defaultCenter variable)
 
       map = new google.maps.Map(googleMap.current, {
         center: defaultCenter,
@@ -58,35 +61,50 @@ const Map = () => {
         styles: hidePois,
       })
 
-      // Show markers on map from firebase data
+      // Loop through all sellers in database and get information and coordinates for each seller
 
       for (let i = 0; i < sellers.length; i++) {
         const seller = sellers[i]
         const lat = parseFloat(seller.location.lat)
         const lng = parseFloat(seller.location.lng)
 
-        const marker = new google.maps.Marker({
+        // Create markers from fetched coordinates and display on map
+
+        let marker = new google.maps.Marker({
           position: { lat: lat, lng: lng },
           map,
         })
 
-        // Open popup on marker click
+        // Create info window
+
+        let infowindow = new google.maps.InfoWindow()
+
+        // Info about selected seller to display in infowindow
 
         const sellerInfo = `<div class="content">
-      <p><strong>${seller.address}</strong><br /></p>
-      <p>${seller.categories.join(', ')}</p><br />
-      <p>${seller.info}</p></div>`
+                <p><strong>${seller.address}</strong><br /></p>
+                <p>${seller.categories.join(', ')}</p><br />
+                <p>${seller.info}</p>
+                </div>`
 
-        const infowindow = new google.maps.InfoWindow({
-          content: sellerInfo,
+        // Close current info window if a new marker is clicked
+
+        google.maps.event.addListener(marker, 'click', function() {
+          {
+            if (currentInfoWindow != '') {
+              currentInfoWindow.close()
+              currentInfoWindow = ''
+            }
+            infowindow.setContent(sellerInfo)
+            infowindow.open(map, marker)
+            currentInfoWindow = infowindow
+          }
         })
 
-        marker.addListener('click', () => {
-          infowindow.open({
-            anchor: marker,
-            map,
-            shouldFocus: false,
-          })
+        // Close info window when user click anywhere on the map
+
+        google.maps.event.addListener(map, 'click', function() {
+          infowindow.close()
         })
       }
     })
