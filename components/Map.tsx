@@ -6,7 +6,7 @@ import { db } from '../firebase'
 const Map = () => {
   const [sellers, setSellers] = useState<any>([])
 
-  const [isChecked, setIsChecked] = useState<boolean>(true)
+  const [isChecked, setIsChecked] = useState<boolean>(false)
 
   const googleMap: any = useRef(null)
   let markers: any = []
@@ -78,6 +78,7 @@ const Map = () => {
 
         let marker = new google.maps.Marker({
           position: { lat: lat, lng: lng },
+          icon: 'https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=35&hoffset=0&voffset=-1&background=E46D6D',
           map,
         })
 
@@ -123,13 +124,15 @@ const Map = () => {
     })
   })
 
+  // Change to custom marker (yellow with star icon) if category is selected by checkbox click
+
   const handleCheck = (e: any) => {
     for (var i = 0; i < sellers.length; i++) {
       if (sellers[i].categories.includes(e.target.id)) {
-        if (!e.target.checked) {
-          markers[i].setVisible(false)
+        if (e.target.checked) {
+          markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-star&size=38&hoffset=0&voffset=-1&background=f6c50e')
         } else {
-          markers[i].setVisible(true)
+          markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=35&hoffset=0&voffset=-1&background=E46D6D')
         }
       }
     }
@@ -137,7 +140,8 @@ const Map = () => {
 
   return (
     <>
-      <div className="container mx-auto flex justify-center mt-4 w-11/12 lg:w-2/3">
+      <div className="container mx-auto flex flex-col justify-center mt-4 w-11/12 lg:w-2/3">
+        <div><p className="text-center font-bold mb-2">Välj kategori för att markera dessa på kartan</p></div>
         <form className="flex flex-wrap justify-center">
           <div>
             <label htmlFor="Damkläder">
