@@ -5,7 +5,7 @@ import React from 'react'
 const Home: NextPage = () => {
   return (
     <>
-      <div className="container mx-auto mt-32 flex flex-col justify-items-center">
+      <div className="container flex flex-col mt-48">
         <img
           src="/logos/grannloppis_logo.png"
           alt="Grannloppis logotype"
