@@ -10,7 +10,7 @@ module.exports = {
       lg: '976px',
     },
     colors: {
-      'main': '#326B5B',
+      'main': '#417171',
       'white': '#ffffff',
       'black': '#000000',
       'yellow': '#f6c50e',
