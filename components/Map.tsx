@@ -144,7 +144,7 @@ const Map = () => {
     <>
       <fieldset className="container flex flex-col mt-4 w-11/12 lg:w-2/3 pl-4">
         <legend className="font-bold m-2">Visa hushåll som säljer:</legend>
-        <form className="flex flex-wrap">
+        <form className="flex flex-wrap gap-x-2 gap-y-1">
           <div>
             <label htmlFor="Damkläder">
               <input
