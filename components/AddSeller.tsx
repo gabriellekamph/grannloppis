@@ -149,7 +149,7 @@ const AddSeller = () => {
                         <label htmlFor="categories4" className="mr-3">
                           <input
                             type="checkbox"
-                            name="categories[]"
+                            name="categories"
                             value="Herrskor"
                             className="mr-2 mt-1"
                             onChange={handleChecked}
