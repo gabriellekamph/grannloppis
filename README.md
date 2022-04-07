@@ -1,19 +1,19 @@
-### Stay tuned for more info about this project :rotating_light: 
+#### What is Grannloppis?
 
-###### Getting Started 
+Grannloppis is a tool to easily overview and participate in local flea markets with your neighbours. See all selling households on the map and use the filtering feature to highlight the most interesting sellers based on categories of what they sell.
 
-First, run the development server:
+You can easily add (and remove) yourself as a seller to the map after login (using Firebase Email Link Authentication, so no passwords needed!)
+
+#### Technologies
+
+This project is built Next.js and Typescript, with Tailwind CSS for styling and Firebase as database.
+
+#### Getting started
+
+To run this project, just clone the repo and run:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Then open [http://localhost:3000](http://localhost:3000) with your browser.
