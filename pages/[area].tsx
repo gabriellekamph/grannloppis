@@ -42,9 +42,11 @@ const Area = () => {
     <>
       {loadingAuthState ? null : (
         <>
+        <div className="p-5">
           <Header />
           {user && !activeSeller ? <AddSeller /> : null}
           {user && activeSeller ? <RemoveSeller /> : null}
+          </div>
           <Map />
         </>
       )}

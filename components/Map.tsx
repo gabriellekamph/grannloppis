@@ -92,7 +92,7 @@ const Map = () => {
 
         const sellerInfo = `<div>
                 <p style="line-height:2"><strong>${address}</strong><br />
-                ${categories.join(', ')} <br />
+                  <p style="line-height:1">${categories.join(', ')}</p> <br />
                 <i>${info}</i>
                 </p>
                 </div>`
@@ -142,9 +142,9 @@ const Map = () => {
 
   return (
     <>
-      <div className="container mx-auto flex flex-col justify-center mt-4 w-11/12 lg:w-2/3">
-        <div><p className="text-center font-bold mb-2">Välj kategori för att markera dessa på kartan</p></div>
-        <form className="flex flex-wrap justify-center">
+      <fieldset className="container flex flex-col mt-4 w-11/12 lg:w-2/3 pl-4">
+        <legend className="font-bold m-2">Visa hushåll som säljer:</legend>
+        <form className="flex flex-wrap">
           <div>
             <label htmlFor="Damkläder">
               <input
@@ -222,22 +222,6 @@ const Map = () => {
                 onChange={handleCheck}
               />
               Barnkläder
-            </label>
-          </div>
-
-          <div>
-            {' '}
-            <label htmlFor="Inredning">
-              <input
-                className="checkbox mr-1 ml-2"
-                id="Inredning"
-                name="Inredning"
-                type="checkbox"
-                value="Inredning"
-                defaultChecked={isChecked}
-                onChange={handleCheck}
-              />
-              Inredning
             </label>
           </div>
 
@@ -334,7 +318,7 @@ const Map = () => {
             </label>
           </div>
         </form>
-      </div>
+      </fieldset>
       <div className="map-container text-black mt-6">
         <div id="map" ref={googleMap} />
       </div>

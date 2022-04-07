@@ -13,6 +13,7 @@ module.exports = {
       'raspberry': '#E46D6D',
       'white': '#ffffff',
       'black': '#000000',
+      'green': '#9DEBA2',
     },
     extend: {},
     },
