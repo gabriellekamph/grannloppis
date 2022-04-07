@@ -7,11 +7,12 @@ const Home: NextPage = () => {
     <>
       <div className="container flex flex-col mt-48">
         <img
-          src="/logos/grannloppis_logo.png"
+          src="/logos/logo.png"
           alt="Grannloppis logotype"
-          width="500"
+          width="250"
           className="mx-auto"
         />
+        <h1 className="text-5xl lg:text-6xl font-bold text-center uppercase mb-14">Grannloppis</h1>
         <DropDown />
       </div>
     </>
