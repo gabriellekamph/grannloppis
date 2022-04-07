@@ -9,7 +9,7 @@ const Map = () => {
   const [isChecked, setIsChecked] = useState<boolean>(true)
 
   const googleMap: any = useRef(null)
-  let markers:any = []
+  let markers: any = []
 
   const hidePois = [
     {
@@ -52,8 +52,6 @@ const Map = () => {
     let map: any
     let currentInfoWindow: any = ''
 
-    let marker:any;
-
     loader.load().then(() => {
       const google = window.google
       const defaultCenter = { lat: 59.23146869560826, lng: 18.247962069565833 }
@@ -78,7 +76,7 @@ const Map = () => {
 
         // Create markers from fetched coordinates and display on map
 
-        marker = new google.maps.Marker({
+        let marker = new google.maps.Marker({
           position: { lat: lat, lng: lng },
           map,
         })
@@ -100,65 +98,240 @@ const Map = () => {
 
         // Close current info window if a new marker is clicked
 
-        google.maps.event.addListener(marker, 'click', function() {
+        google.maps.event.addListener(marker, 'click', function () {
           {
             if (currentInfoWindow != '') {
               currentInfoWindow.close()
               currentInfoWindow = ''
             }
             infowindow.setContent(sellerInfo)
-            infowindow.open(map, marker)
+            infowindow.open({
+              anchor: marker,
+              map,
+              shouldFocus: true,
+            })
             currentInfoWindow = infowindow
           }
         })
 
         // Close info window when user click anywhere on the map
 
-        google.maps.event.addListener(map, 'click', function() {
+        google.maps.event.addListener(map, 'click', function () {
           infowindow.close()
         })
       }
     })
   })
 
-
-  const handleCheck = (e:any) => {
-    
-    for (var i=0; i<sellers.length; i++) {
-
+  const handleCheck = (e: any) => {
+    for (var i = 0; i < sellers.length; i++) {
       if (sellers[i].categories.includes(e.target.id)) {
         if (!e.target.checked) {
           markers[i].setVisible(false)
         } else {
           markers[i].setVisible(true)
         }
-      } 
-
+      }
     }
-
-
-    
   }
 
   return (
     <>
-    <fieldset id="form">
-    <p>
-    <input className="checkbox" id="Inredning" name="Inredning" type="checkbox" value="Inredning" defaultChecked={isChecked} onChange={handleCheck} />
-    <label htmlFor="Inredning">Inredning</label>
-    </p>
-    <p>
-    <input className="checkbox" id="Kaffe/Fika" name="Kaffe/Fika" type="checkbox" value="Kaffe/Fika" defaultChecked={isChecked} onChange={handleCheck} />
-    <label htmlFor="Kaffe/Fika">Kaffe/Fika</label>
-    </p>
-    <p>
-    <input className="checkbox" id="Möbler" name="Möbler" type="checkbox" value="Möbler" defaultChecked={isChecked} onChange={handleCheck} />
-    <label htmlFor="Möbler">Möbler</label>
-    </p>
-</fieldset>
-    <div className="map-container text-black mt-6">
-      <div id="map" ref={googleMap} />
-    </div>
+      <div className="container mx-auto flex justify-center mt-4 w-11/12 lg:w-2/3">
+        <form className="flex flex-wrap justify-center">
+          <div>
+            <label htmlFor="Damkläder">
+              <input
+                className="checkbox mr-1 ml-2"
+                id="Damkläder"
+                name="Damkläder"
+                type="checkbox"
+                value="Damkläder"
+                defaultChecked={isChecked}
+                onChange={handleCheck}
+              />
+              Damkläder
+            </label>
+          </div>
+
+          <div>
+            {' '}
+            <label htmlFor="Damskor">
+              {' '}
+              <input
+                className="checkbox mr-1 ml-2"
+                id="Damskor"
+                name="Damskor"
+                type="checkbox"
+                value="Damskor"
+                defaultChecked={isChecked}
+                onChange={handleCheck}
+              />
+              Damskor
+            </label>
+          </div>
+
+          <div>
+            {' '}
+            <label htmlFor="Herrkläder">
+              <input
+                className="checkbox mr-1 ml-2"
+                id="Herrkläder"
+                name="Herrkläder"
+                type="checkbox"
+                value="Herrkläder"
+                defaultChecked={isChecked}
+                onChange={handleCheck}
+              />
+              Herrkläder
+            </label>
+          </div>
+
+          <div>
+            {' '}
+            <label htmlFor="Herrskor">
+              <input
+                className="checkbox mr-1 ml-2"
+                id="Herrskor"
+                name="Herrskor"
+                type="checkbox"
+                value="Herrskor"
+                defaultChecked={isChecked}
+                onChange={handleCheck}
+              />
+              Herrskor
+            </label>
+          </div>
+
+          <div>
+            {' '}
+            <label htmlFor="Barnkläder">
+              <input
+                className="checkbox mr-1 ml-2"
+                id="Barnkläder"
+                name="Barnkläder"
+                type="checkbox"
+                value="Barnkläder"
+                defaultChecked={isChecked}
+                onChange={handleCheck}
+              />
+              Barnkläder
+            </label>
+          </div>
+
+          <div>
+            {' '}
+            <label htmlFor="Inredning">
+              <input
+                className="checkbox mr-1 ml-2"
+                id="Inredning"
+                name="Inredning"
+                type="checkbox"
+                value="Inredning"
+                defaultChecked={isChecked}
+                onChange={handleCheck}
+              />
+              Inredning
+            </label>
+          </div>
+
+          <div>
+            {' '}
+            <label htmlFor="Barnskor">
+              <input
+                className="checkbox mr-1 ml-2"
+                id="Barnskor"
+                name="Barnskor"
+                type="checkbox"
+                value="Barnskor"
+                defaultChecked={isChecked}
+                onChange={handleCheck}
+              />
+              Barnskor
+            </label>
+          </div>
+
+          <div>
+            {' '}
+            <label htmlFor="Leksaker">
+              <input
+                className="checkbox mr-1 ml-2"
+                id="Leksaker"
+                name="Leksaker"
+                type="checkbox"
+                value="Leksaker"
+                defaultChecked={isChecked}
+                onChange={handleCheck}
+              />
+              Leksaker
+            </label>
+          </div>
+
+          <div>
+            {' '}
+            <label htmlFor="Övriga barnartiklar">
+              <input
+                className="checkbox mr-1 ml-2"
+                id="Övriga barnartiklar"
+                name="Övriga barnartiklar"
+                type="checkbox"
+                value="Övriga barnartiklar"
+                defaultChecked={isChecked}
+                onChange={handleCheck}
+              />
+              Övriga barnartiklar
+            </label>
+          </div>
+
+          <div>
+            {' '}
+            <label htmlFor="Inredning">
+              <input
+                className="checkbox mr-1 ml-2"
+                id="Inredning"
+                name="Inredning"
+                type="checkbox"
+                value="Inredning"
+                onChange={handleCheck}
+              />
+              Inredning
+            </label>
+          </div>
+
+          <div>
+            {' '}
+            <label htmlFor="Möbler">
+              <input
+                className="checkbox mr-1 ml-2"
+                id="Möbler"
+                name="Möbler"
+                type="checkbox"
+                value="Möbler"
+                onChange={handleCheck}
+              />
+              Möbler
+            </label>
+          </div>
+
+          <div>
+            {' '}
+            <label htmlFor="Kaffe/Fika">
+              <input
+                className="checkbox mr-1 ml-2"
+                id="Kaffe/Fika"
+                name="Kaffe/Fika"
+                type="checkbox"
+                value="Kaffe/Fika"
+                onChange={handleCheck}
+              />
+              Kaffe/Fika
+            </label>
+          </div>
+        </form>
+      </div>
+      <div className="map-container text-black mt-6">
+        <div id="map" ref={googleMap} />
+      </div>
     </>
   )
 }
