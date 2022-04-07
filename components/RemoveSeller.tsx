@@ -38,7 +38,7 @@ const RemoveSeller = () => {
   return (
     <div className="w-full mt-4">
       <button
-        className="text-white hover:bg-pink-600 px-4 py-2 rounded-md border-solid border-2 border-white-200 hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
+        className="text-white hover:bg-pink-600 px-2 py-2 rounded-md border-solid border-2 border-white-200 hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
         onClick={() => setShowModal(!showModal)}
       >
         Ta bort dig som säljare
