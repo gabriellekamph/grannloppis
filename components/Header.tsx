@@ -44,7 +44,7 @@ const Header = () => {
           </Link>
           {loadingAuthState ? null : <div>{user ? <LogoutBtn /> : <LoginBtn />}</div>}
         </div>
-        <h1 className="text-5xl lg:text-6xl font-bold uppercase mb-1">{area}</h1>
+        <h1 className="text-5xl lg:text-6xl font-bold capitalize mb-1">{area}</h1>
         
         <div className="flex gap-2">
         {user ? <UserIcon className="w-5" /> : null}

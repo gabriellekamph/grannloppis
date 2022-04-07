@@ -319,7 +319,7 @@ const Map = () => {
           </div>
         </form>
       </fieldset>
-      <div className="map-container text-black mt-6">
+      <div className="map-container text-black m-5 rounded-xl">
         <div id="map" ref={googleMap} />
       </div>
     </>
