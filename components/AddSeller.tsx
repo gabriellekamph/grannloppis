@@ -66,7 +66,7 @@ const AddSeller = () => {
     <>
       <div className="w-full flex justify-center mt-4">
         <button
-          className="text-white hover:bg-pink-600 text-sm px-6 py-3 rounded-md px-4 py-3 border-solid border-2 border-white-200 hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
+          className="text-white hover:bg-pink-600 px-6 py-3 rounded-md px-4 py-3 border-solid border-2 border-white-200 hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
           type="button"
           onClick={() => setShowModal(true)}>
           Lägg till dig som säljare
@@ -80,17 +80,17 @@ const AddSeller = () => {
                 <p className="text-xl font-semibold text-black mb-2">
                   Lägg till dig som säljare
                 </p>
-                <p className="text-sm text-black">
+                <p className="text-black">
                   Vad roligt att du vill vara med och sälja på loppisen! Fyll i din
                   adress, vilken typ av varor du säljer och spara för att läggas till på
                   loppiskartan.
                 </p>
               </div>
-              <div className="container w-auto text-black text-sm">
+              <div className="container w-auto text-black">
                 <form onSubmit={addSeller} className="text-black">
                   <div className="flex w-full flex-wrap items-stretch mb-2">
                     <label htmlFor="address">Vilken adress säljer du från?</label>
-                    <div className="py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm outline-none focus:outline-none focus:ring w-full">
+                    <div className="py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded outline-none focus:outline-none focus:ring w-full">
                       <GooglePlacesAutocomplete
                         selectProps={{
                           address,

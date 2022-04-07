@@ -56,7 +56,7 @@ const LoginBtn = () => {
           <div className="container max-w-xs h-auto bg-white mx-auto text-black p-5 m-5 flex overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-md px-5">
             <form>
               <p className="font-bold text-lg mb-3">Logga in</p>
-              <p className="text-sm">
+              <p>
                 Fyll i din e-postadress för att få en inloggningslänk skickad till dig.
                 När du har loggat in genom att klicka på länken kan du enkelt lägga till
                 eller ta bort dig själv som säljare på loppiskartan.

@@ -25,7 +25,7 @@ const LogoutBtn = () => {
               <h1 className="font-bold text-md mb-3 text-center">
                 Är du säker på att du vill logga ut?
               </h1>
-              <p className="text-sm text-center">
+              <p className="text-center">
                 Om du vill logga in på nytt senare behöver du en ny inloggningslänk.
               </p>
 
