@@ -38,7 +38,7 @@ const RemoveSeller = () => {
   return (
     <div className="w-full flex justify-center mt-4">
       <button
-        className="text-white hover:bg-pink-600 text-sm px-6 py-3 rounded-md px-4 py-3 border-solid border-2 border-white-200 hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
+        className="text-white hover:bg-pink-600 px-6 py-3 rounded-md px-4 py-3 border-solid border-2 border-white-200 hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
         onClick={() => setShowModal(!showModal)}
       >
         Ta bort dig som säljare
@@ -60,7 +60,7 @@ const RemoveSeller = () => {
                   Avbryt
                 </button>
                 <button
-                  className="active:bg-emerald-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
+                  className="active:bg-emerald-600 font-bold px-6 py-3 rounded shadow hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
                   type="button"
                   onClick={removeConfirmed}
                 >
