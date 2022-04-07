@@ -20,7 +20,7 @@ const LogoutBtn = () => {
 
       {showModal ? (
         <>
-          <div className="container max-w-sm h-auto bg-white mx-auto text-black p-5 m-5 flex overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-md px-5">
+          <div className="container max-w-sm w-11/12 h-auto bg-white mx-auto text-black p-5 m-5 flex overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-md px-5">
             <form>
               <h1 className="font-bold text-md mb-3 text-center">
                 Är du säker på att du vill logga ut?
