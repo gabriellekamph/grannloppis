@@ -8,6 +8,7 @@ import { auth } from '../firebase'
 import { AuthContext } from '../context/AuthProvider'
 import { signOut } from 'firebase/auth'
 import { SellerContext } from '../context/SellerContext'
+import { UserIcon } from '@heroicons/react/solid'
 
 const Header = () => {
   const router = useRouter()
@@ -34,8 +35,8 @@ const Header = () => {
 
   return (
     <>
-      <div className="container flex justify-between p-1 flex flex-col">
-        <div className="container flex justify-between mb-5 p-3">
+      <div className="container flex justify-between flex-col">
+        <div className="container flex justify-between mb-5">
           <Link href="/">
             <a>
               <ArrowNarrowLeftIcon className="h-7 w-8" />
@@ -43,15 +44,19 @@ const Header = () => {
           </Link>
           {loadingAuthState ? null : <div>{user ? <LogoutBtn /> : <LoginBtn />}</div>}
         </div>
-        <h1 className="text-5xl lg:text-6xl font-bold uppercase text-center mb-1">{area}</h1>
-
+        <h1 className="text-5xl lg:text-6xl font-bold uppercase mb-1">{area}</h1>
+        
+        <div className="flex gap-2">
+        {user ? <UserIcon className="w-5 text-green" /> : null}
         {loadingAuthState ? null : (
-          <p className="container mx-auto text-center w-11/12">
+          <p className="container text-sm w-11/12">
             {user
               ? `${currentUser}`
               : 'Logga in för att lägga till eller ta bort dig själv från loppiskartan.'}
           </p>
         )}
+
+        </div>
       </div>
     </>
   )
