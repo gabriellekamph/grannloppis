@@ -47,7 +47,7 @@ const Header = () => {
         <h1 className="text-5xl lg:text-6xl font-bold uppercase mb-1">{area}</h1>
         
         <div className="flex gap-2">
-        {user ? <UserIcon className="w-5 text-green" /> : null}
+        {user ? <UserIcon className="w-5" /> : null}
         {loadingAuthState ? null : (
           <p className="container text-sm w-11/12">
             {user

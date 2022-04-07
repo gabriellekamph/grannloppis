@@ -10,10 +10,10 @@ module.exports = {
       lg: '976px',
     },
     colors: {
-      'raspberry': '#E46D6D',
+      'main': '#4E4B70',
       'white': '#ffffff',
       'black': '#000000',
-      'green': '#9DEBA2',
+      'yellow': '#f6c50e',
     },
     extend: {},
     },

@@ -78,7 +78,7 @@ const Map = () => {
 
         let marker = new google.maps.Marker({
           position: { lat: lat, lng: lng },
-          icon: 'https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=40&hoffset=0&voffset=-1&background=E46D6D',
+          icon: 'https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=40&hoffset=0&voffset=-1&background=4E4B70',
           map,
         })
 
@@ -130,9 +130,9 @@ const Map = () => {
     for (var i = 0; i < sellers.length; i++) {
       if (sellers[i].categories.includes(e.target.id)) {
         if (e.target.checked) {
-          markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-star&size=42&hoffset=0&voffset=-1&background=f6c50e')
+          markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-star&size=42&hoffset=0&voffset=-1&background=FFBF1A')
         } else {
-          markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=40&hoffset=0&voffset=-1&background=E46D6D')
+          markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=40&hoffset=0&voffset=-1&background=4E4B70')
         }
       }
     }

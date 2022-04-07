@@ -31,7 +31,7 @@ const DropDown = () => {
           leave="transition ease-in duration-75"
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95">
-          <Menu.Items className="origin-top-right absolute right-0 mt-2 py-2 w-full bg-white text-raspberry rounded-lg bg-transparent flex flex-wrap flex-col">
+          <Menu.Items className="origin-top-right absolute right-0 mt-2 py-2 w-full bg-white text-main rounded-lg bg-transparent flex flex-wrap flex-col">
             <Menu.Item>
               <MyLink href="/krusboda">Krusboda</MyLink>
             </Menu.Item>
