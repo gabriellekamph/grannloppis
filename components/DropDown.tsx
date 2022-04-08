@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
-import { ArrowNarrowDownIcon } from '@heroicons/react/solid'
+import { ChevronDownIcon } from '@heroicons/react/solid'
 
 function MyLink(props: any) {
   let { href, children, ...rest } = props
@@ -17,9 +17,9 @@ const DropDown = () => {
     <div className="flex justify-center">
       <Menu as="div" className="relative inline-block text-center max-w-sm">
         <div>
-          <Menu.Button className="inline-flex justify-center w-full rounded-md border px-4 py-3 bg-transparent text-md font-small focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+          <Menu.Button className="inline-flex justify-center w-full rounded-lg border pl-4 pr-2 py-2 bg-transparent">
             <p className="text-md text-center">Välj loppis att delta på</p>
-            <ArrowNarrowDownIcon className="-mr-1 ml-2 h-5 w-4" aria-hidden="true" />
+            <ChevronDownIcon className="ml-2 h-6" aria-hidden="true" />
           </Menu.Button>
         </div>
 

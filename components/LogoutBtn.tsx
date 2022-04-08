@@ -20,7 +20,7 @@ const LogoutBtn = () => {
 
       {showModal ? (
         <>
-          <div className="container max-w-sm w-11/12 h-auto bg-white mx-auto text-black p-5 m-5 flex overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-md px-5">
+          <div className="container max-w-xs w-11/12 h-auto bg-white mx-auto text-black p-5 m-5 flex overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-md px-5">
             <form>
               <h1 className="font-bold text-md mb-3 text-center">
                 Är du säker på att du vill logga ut?
@@ -31,13 +31,13 @@ const LogoutBtn = () => {
 
               <div className="flex items-center text-black justify-center pt-6 text-black gap-5">
                 <button
-                  className="font-bold px-6 py-3 rounded shadow hover:shadow-lg mr-1 mb-1 transition-all duration-150"
+                  className="px-3 py-2 rounded-lg bg-lightgray hover:scale-105"                  
                   type="button"
                   onClick={() => setShowModal(false)}>
                   Avbryt
                 </button>
                 <button
-                  className="font-bold px-6 py-3 rounded shadow hover:shadow-lg mr-1 mb-1 transition-all duration-150"
+                  className="text-white px-3 py-2 rounded-lg bg-main hover:scale-105"                  
                   type="button"
                   onClick={logoutConfirmed}>
                   Ja, jag är säker!

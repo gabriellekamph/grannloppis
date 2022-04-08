@@ -12,7 +12,7 @@ const Home: NextPage = () => {
           width="250"
           className="mx-auto"
         />
-        <h1 className="text-5xl lg:text-6xl font-bold text-center uppercase mb-14">Grannloppis</h1>
+        <h1 className="text-5xl lg:text-6xl font-bold text-center mb-14">Grannloppis</h1>
         <DropDown />
       </div>
     </>

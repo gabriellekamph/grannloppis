@@ -53,7 +53,7 @@ const LoginBtn = () => {
 
       {showModal && !submitted ? (
         <>
-          <div className="container max-w-xs h-auto bg-white mx-auto text-black p-5 m-5 flex overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-md px-5">
+          <div className="container max-w-xs h-auto bg-white mx-auto text-black p-5 m-5 flex overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-lg px-5">
             <form>
               <p className="font-bold text-lg mb-3">Logga in</p>
               <p>
@@ -67,17 +67,17 @@ const LoginBtn = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 placeholder="E-postadress"
-                className="py-3 placeholder-blueGray-300 mb-3 relative bg-white rounded border border-blueGray-300 w-full pl-3 mt-3"
+                className="py-3 placeholder-blueGray-300 mb-3 relative bg-white rounded-lg border border-blueGray-300 w-full pl-3 mt-3"
               />
               <div className="flex justify-center pt-6 gap-5">
                 <button
-                  className="font-bold px-6 py-3 rounded shadow hover:shadow-lg mr-1 mb-1 transition-all duration-150"
+                  className="px-3 py-2 rounded-lg bg-lightgray hover:scale-105"                  
                   type="button"
                   onClick={() => setShowModal(false)}>
                   Avbryt
                 </button>
                 <button
-                  className="font-bold px-6 py-3 rounded shadow hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
+                  className="text-white px-3 py-2 rounded-lg bg-main hover:scale-105"                  
                   type="button"
                   onClick={login}>
                   Skicka länk
@@ -89,13 +89,13 @@ const LoginBtn = () => {
         </>
       ) : showModal && submitted ? (
         <>
-          <div className="container max-w-min h-auto bg-white mx-auto text-black p-5 m-5 flex flex-col overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed rounded-md px-5">
+          <div className="container w-64 h-auto bg-white mx-auto text-black p-5 m-5 flex flex-col gap-5 overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed rounded-lg">
             <p className="text-center">
               Inloggningslänk skickad <Emoji symbol="🎉" />
             </p>
             <button
-              className="bg-emerald-500 w-32 text-black active:bg-emerald-600 font-bold px-6 py-3 rounded shadow hover:shadow-lg mr-10 ml-10 mt-5 mb-1 ease-linear transition-all duration-150"
-              type="button"
+                  className="text-white px-3 py-2 rounded-lg bg-main hover:scale-105"              
+                  type="button"
               onClick={() => {
                 setShowModal(false), setSubmitted(false)
               }}>
