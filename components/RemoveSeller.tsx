@@ -38,29 +38,29 @@ const RemoveSeller = () => {
   return (
     <div className="w-full mt-4">
       <button
-        className="text-white hover:bg-pink-600 px-2 py-2 rounded-md border-solid border-2 border-white-200 hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
-        onClick={() => setShowModal(!showModal)}
+          className="px-3 py-2 rounded-lg bg-darkmain hover:bg-lightmain mr-1 mb-1 transition-all duration-100"
+          onClick={() => setShowModal(!showModal)}
       >
         Ta bort dig som säljare
       </button>
 
       {showModal ? (
         <>
-          <div className="container max-w-xs h-auto bg-white mx-auto justify-center text-black p-5 m-5 flex overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-md px-5">
+          <div className="container max-w-xs h-auto bg-white mx-auto justify-center text-black p-5 m-5 flex overflow-x-hidden inset-x-0 overflow-y-auto z-50 fixed outline-none focus:outline-none rounded-lg px-5">
             <form>
               <h1 className="text-md text-center text-center">
                 Är du säker på att du vill ta bort dig som säljare från loppiskartan?
               </h1>
               <div className="flex items-center justify-center text-black pt-6 gap-5">
                 <button
-                  className="font-bold px-6 py-3 rounded shadow hover:shadow-lg mr-1 mb-1 transition-all duration-150"
+                  className="px-3 py-2 rounded-lg bg-lightgray hover:scale-105"
                   type="button"
                   onClick={() => setShowModal(false)}
                 >
                   Avbryt
                 </button>
                 <button
-                  className="active:bg-emerald-600 font-bold px-6 py-3 rounded shadow hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
+                  className="text-white px-3 py-2 rounded-lg bg-main hover:scale-105"                  
                   type="button"
                   onClick={removeConfirmed}
                 >

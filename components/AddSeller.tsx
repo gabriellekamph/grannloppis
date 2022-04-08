@@ -66,7 +66,7 @@ const AddSeller = () => {
     <>
       <div className="w-full flex mt-4">
         <button
-          className="text-white hover:bg-pink-600 px-2 py-2 rounded-md border-solid border-2 border-white-200 hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
+          className="px-3 py-2 rounded-lg bg-lightmain hover:bg-darkmain mr-1 mb-1 transition-all duration-100"
           type="button"
           onClick={() => setShowModal(true)}>
           Lägg till dig som säljare
@@ -247,20 +247,20 @@ const AddSeller = () => {
                       type="text"
                       onChange={(e) => setInfo(e.target.value)}
                       placeholder="t.ex. särskilda öppettider"
-                      className="py-3 placeholder-blueGray-300 relative bg-white rounded border border-blueGray-300 focus:ring w-full pr-10 pl-3 mt-3"
+                      className="py-3 placeholder-blueGray-300 relative bg-white rounded-lg border border-lightgray w-full pr-10 pl-3 mt-3"
                     />
                   </div>
                 </form>
               </div>
               <div className="flex items-center text-black justify-end pt-4 gap-5">
                 <button
-                  className="font-bold px-6 py-3 rounded shadow hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
+                  className="px-3 py-2 rounded-lg bg-lightgray hover:scale-105"
                   type="button"
                   onClick={() => setShowModal(false)}>
                   Avbryt
                 </button>
                 <button
-                  className="font-bold px-6 py-3 rounded shadow hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
+                  className="text-white px-3 py-2 rounded-lg bg-main hover:scale-105"
                   type="button"
                   onClick={addSeller}>
                   Spara
