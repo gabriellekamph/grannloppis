@@ -15,7 +15,7 @@ module.exports = {
       'lightmain': '#00a780',
       'white': '#ffffff',
       'black': '#000000',
-      'yellow': '#f6c50e',
+      'yellow': '#FFAA00',
       'lightgray': '#dbdbdb',
       'pink': '#E86566',
     },
