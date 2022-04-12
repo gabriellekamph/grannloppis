@@ -36,29 +36,26 @@ const Header = () => {
   return (
     <>
       <div className="container flex justify-between flex-col">
-        <div className="container flex justify-between mb-5">
+        <div className="container flex justify-between items-center mb-10">
           <Link href="/">
             <a>
-              <ArrowNarrowLeftIcon className="h-7 w-8" />
+              <img src="/logos/logo.png" alt="Grannloppis small logotype" width="80" className="cursor-pointer transition duration-200 hover:scale-105" />
             </a>
           </Link>
           {loadingAuthState ? null : <div>{user ? <LogoutBtn /> : <LoginBtn />}</div>}
         </div>
 
-        <h1 className="text-5xl lg:text-6xl font-bold capitalize mb-1">        
-        {area} </h1> 
+        <h1 className="text-5xl lg:text-6xl font-bold capitalize mb-1">{area}</h1>
 
-        
         <div className="flex gap-2">
-        {user ? <UserIcon className="w-5" /> : null}
-        {loadingAuthState ? null : (
-          <p className="container text-sm w-11/12">
-            {user
-              ? `${currentUser}`
-              : 'Logga in för att lägga till eller ta bort dig själv från loppiskartan.'}
-          </p>
-        )}
-
+          {user ? <UserIcon className="w-5" /> : null}
+          {loadingAuthState ? null : (
+            <p className="container text-sm w-11/12">
+              {user
+                ? `${currentUser}`
+                : 'Logga in för att lägga till eller ta bort dig själv från loppiskartan.'}
+            </p>
+          )}
         </div>
       </div>
     </>
