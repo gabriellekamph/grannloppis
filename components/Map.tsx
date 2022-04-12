@@ -138,17 +138,14 @@ const Map = () => {
     }
   }
 
-
-
   return (
     <>
-      <fieldset className="container flex flex-col mt-4 w-11/12 lg:w-2/3 pl-4">
+      <fieldset className="container flex flex-col mt-4 w-full lg:w-3/4 pl-4">
         <legend className="font-bold m-2">Visa hushåll som säljer:</legend>
-        <form className="flex flex-wrap gap-x-2 gap-y-1">
+        <form className="flex flex-wrap gap-x-3 gap-y-2">
           <div>
             <label htmlFor="Damkläder">
               <input
-                className="checkbox mr-1 ml-2"
                 id="Damkläder"
                 name="Damkläder"
                 type="checkbox"
@@ -165,7 +162,6 @@ const Map = () => {
             <label htmlFor="Damskor">
               {' '}
               <input
-                className="checkbox mr-1 ml-2"
                 id="Damskor"
                 name="Damskor"
                 type="checkbox"
@@ -181,7 +177,6 @@ const Map = () => {
             {' '}
             <label htmlFor="Herrkläder">
               <input
-                className="checkbox mr-1 ml-2"
                 id="Herrkläder"
                 name="Herrkläder"
                 type="checkbox"
@@ -197,7 +192,6 @@ const Map = () => {
             {' '}
             <label htmlFor="Herrskor">
               <input
-                className="checkbox mr-1 ml-2"
                 id="Herrskor"
                 name="Herrskor"
                 type="checkbox"
@@ -213,7 +207,6 @@ const Map = () => {
             {' '}
             <label htmlFor="Barnkläder">
               <input
-                className="checkbox mr-1 ml-2"
                 id="Barnkläder"
                 name="Barnkläder"
                 type="checkbox"
@@ -229,7 +222,6 @@ const Map = () => {
             {' '}
             <label htmlFor="Barnskor">
               <input
-                className="checkbox mr-1 ml-2"
                 id="Barnskor"
                 name="Barnskor"
                 type="checkbox"
@@ -245,7 +237,6 @@ const Map = () => {
             {' '}
             <label htmlFor="Leksaker">
               <input
-                className="checkbox mr-1 ml-2"
                 id="Leksaker"
                 name="Leksaker"
                 type="checkbox"
@@ -259,25 +250,8 @@ const Map = () => {
 
           <div>
             {' '}
-            <label htmlFor="Övriga barnartiklar">
-              <input
-                className="checkbox mr-1 ml-2"
-                id="Övriga barnartiklar"
-                name="Övriga barnartiklar"
-                type="checkbox"
-                value="Övriga barnartiklar"
-                defaultChecked={isChecked}
-                onChange={handleCheck}
-              />
-              Övriga barnartiklar
-            </label>
-          </div>
-
-          <div>
-            {' '}
             <label htmlFor="Inredning">
               <input
-                className="checkbox mr-1 ml-2"
                 id="Inredning"
                 name="Inredning"
                 type="checkbox"
@@ -292,7 +266,6 @@ const Map = () => {
             {' '}
             <label htmlFor="Möbler">
               <input
-                className="checkbox mr-1 ml-2"
                 id="Möbler"
                 name="Möbler"
                 type="checkbox"
@@ -307,7 +280,6 @@ const Map = () => {
             {' '}
             <label htmlFor="Kaffe/Fika">
               <input
-                className="checkbox mr-1 ml-2"
                 id="Kaffe/Fika"
                 name="Kaffe/Fika"
                 type="checkbox"
@@ -315,6 +287,21 @@ const Map = () => {
                 onChange={handleCheck}
               />
               Kaffe/Fika
+            </label>
+          </div>
+
+          <div>
+            {' '}
+            <label htmlFor="Övriga barnartiklar">
+              <input
+                id="Övriga barnartiklar"
+                name="Övriga barnartiklar"
+                type="checkbox"
+                value="Övriga barnartiklar"
+                defaultChecked={isChecked}
+                onChange={handleCheck}
+              />
+              Övriga barnartiklar
             </label>
           </div>
         </form>
