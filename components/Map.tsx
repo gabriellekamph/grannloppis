@@ -13,7 +13,6 @@ const Map = () => {
 
   const googleMap: any = useRef(null)
 
-
   const hidePois = [
     {
       featureType: 'poi',
@@ -45,9 +44,6 @@ const Map = () => {
   }
 
   useEffect(() => {
-
-    markers = []
-
     // Load Google Maps
 
     const loader = new Loader({
@@ -59,6 +55,7 @@ const Map = () => {
     let currentInfoWindow: any = ''
 
     loader.load().then(() => {
+      markers = []
       const google = window.google
       const defaultCenter = { lat: 59.23146869560826, lng: 18.247962069565833 }
 
@@ -89,7 +86,26 @@ const Map = () => {
         })
 
         markers.push(marker)
-        console.log(markers)
+
+        let isSellerInCheckedCategories: boolean = false
+
+        for (let j = 0; j < sellers[i].categories.length; j++) {
+          if (checkedCategories.includes(sellers[i].categories[j])) {
+
+            isSellerInCheckedCategories = true
+
+            if (isSellerInCheckedCategories == true) {
+              markers[i].setIcon(
+                'https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-star&size=44&hoffset=0&voffset=-1&background=FFAA00',
+              )
+              break
+            } else {
+              markers[i].setIcon(
+                'https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=44&hoffset=0&voffset=-1&background=E86566',
+              )
+            }
+          }
+        }
 
         // Create info window
 
@@ -133,29 +149,31 @@ const Map = () => {
 
   useEffect(() => {
     for (let i = 0; i < sellers.length; i++) {
-
       let isSellerInCheckedCategories: boolean = false
 
       for (let j = 0; j < sellers[i].categories.length; j++) {
-
         if (checkedCategories.includes(sellers[i].categories[j])) {
-          console.log("SKA FÄRGAS GUL -->", sellers[i].address)
+          console.log('SKA FÄRGAS GUL -->', sellers[i].address)
 
           isSellerInCheckedCategories = true
-          console.log("markers array includes: ", markers)
+          // console.log("markers array includes: ", markers)
 
-        }      
-
-                  // if (isSellerInCheckedCategories == true) {
-          //   markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-star&size=44&hoffset=0&voffset=-1&background=FFAA00')
-          // } else {
-          //   markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=44&hoffset=0&voffset=-1&background=E86566')
-          // }
-
+          if (isSellerInCheckedCategories == true) {
+            markers[i].setIcon(
+              'https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-star&size=44&hoffset=0&voffset=-1&background=FFAA00',
+            )
+            console.log('GUL')
+            break
+          } else {
+            markers[i].setIcon(
+              'https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=44&hoffset=0&voffset=-1&background=E86566',
+            )
+            console.log('ROSA')
+          }
+        }
       }
-        
     }
-  }, [checkedCategories, markers])
+  }, [checkedCategories])
 
   // // Change to custom marker (yellow with star icon) if category is selected by checkbox click
 
@@ -319,6 +337,20 @@ const Map = () => {
                 onChange={handleCheck}
               />
               Möbler
+            </label>
+          </div>
+
+          <div>
+            {' '}
+            <label htmlFor="Verktyg">
+              <input
+                id="Verktyg"
+                name="Verktyg"
+                type="checkbox"
+                value="Verktyg"
+                onChange={handleCheck}
+              />
+              Verktyg
             </label>
           </div>
 
