@@ -3,13 +3,16 @@ import { Loader } from '@googlemaps/js-api-loader'
 import { collection, query, onSnapshot } from 'firebase/firestore'
 import { db } from '../firebase'
 
+let markers: any = []
+
 const Map = () => {
   const [sellers, setSellers] = useState<any>([])
 
   const [isChecked, setIsChecked] = useState<boolean>(false)
+  const [checkedCategories, setCheckedCategories] = useState<any>('')
 
   const googleMap: any = useRef(null)
-  let markers: any = []
+
 
   const hidePois = [
     {
@@ -42,6 +45,9 @@ const Map = () => {
   }
 
   useEffect(() => {
+
+    markers = []
+
     // Load Google Maps
 
     const loader = new Loader({
@@ -83,6 +89,7 @@ const Map = () => {
         })
 
         markers.push(marker)
+        console.log(markers)
 
         // Create info window
 
@@ -124,18 +131,57 @@ const Map = () => {
     })
   })
 
-  // Change to custom marker (yellow with star icon) if category is selected by checkbox click
+  useEffect(() => {
+    for (let i = 0; i < sellers.length; i++) {
+
+      let isSellerInCheckedCategories: boolean = false
+
+      for (let j = 0; j < sellers[i].categories.length; j++) {
+
+        if (checkedCategories.includes(sellers[i].categories[j])) {
+          console.log("SKA FÄRGAS GUL -->", sellers[i].address)
+
+          isSellerInCheckedCategories = true
+          console.log("markers array includes: ", markers)
+
+        }      
+
+                  // if (isSellerInCheckedCategories == true) {
+          //   markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-star&size=44&hoffset=0&voffset=-1&background=FFAA00')
+          // } else {
+          //   markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=44&hoffset=0&voffset=-1&background=E86566')
+          // }
+
+      }
+        
+    }
+  }, [checkedCategories, markers])
+
+  // // Change to custom marker (yellow with star icon) if category is selected by checkbox click
+
+  // const handleCheck = (e: any) => {
+  //   for (var i = 0; i < sellers.length; i++) {
+  //     if (sellers[i].categories.includes(e.target.id)) {
+  //       if (e.target.checked) {
+  //         markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-star&size=44&hoffset=0&voffset=-1&background=FFAA00')
+  //       } else {
+  //         markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=44&hoffset=0&voffset=-1&background=E86566')
+  //       }
+  //     }
+  //   }
+  // }
+
+  // Store all checked categories in state checkedCategories
 
   const handleCheck = (e: any) => {
-    for (var i = 0; i < sellers.length; i++) {
-      if (sellers[i].categories.includes(e.target.id)) {
-        if (e.target.checked) {
-          markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-star&size=44&hoffset=0&voffset=-1&background=FFAA00')
-        } else {
-          markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=44&hoffset=0&voffset=-1&background=E86566')
-        }
-      }
+    let updatedArray = [...checkedCategories]
+    if (e.target.checked) {
+      updatedArray = [...checkedCategories, e.target.value]
+    } else {
+      updatedArray.splice(checkedCategories.indexOf(e.target.value), 1)
     }
+    setCheckedCategories(updatedArray)
+    console.log(updatedArray)
   }
 
   return (
