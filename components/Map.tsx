@@ -3,13 +3,15 @@ import { Loader } from '@googlemaps/js-api-loader'
 import { collection, query, onSnapshot } from 'firebase/firestore'
 import { db } from '../firebase'
 
+let markers: any = []
+
 const Map = () => {
   const [sellers, setSellers] = useState<any>([])
 
   const [isChecked, setIsChecked] = useState<boolean>(false)
+  const [checkedCategories, setCheckedCategories] = useState<any>('')
 
   const googleMap: any = useRef(null)
-  let markers: any = []
 
   const hidePois = [
     {
@@ -53,6 +55,7 @@ const Map = () => {
     let currentInfoWindow: any = ''
 
     loader.load().then(() => {
+      markers = []
       const google = window.google
       const defaultCenter = { lat: 59.23146869560826, lng: 18.247962069565833 }
 
@@ -83,6 +86,28 @@ const Map = () => {
         })
 
         markers.push(marker)
+
+        // Change color on marker from pink to yellow if checked category matches sellers category
+
+        let isSellerInCheckedCategories: boolean = false
+
+        for (let j = 0; j < sellers[i].categories.length; j++) {
+          if (checkedCategories.includes(sellers[i].categories[j])) {
+
+            isSellerInCheckedCategories = true
+
+            if (isSellerInCheckedCategories == true) {
+              markers[i].setIcon(
+                'https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-star&size=44&hoffset=0&voffset=-1&background=FFAA00',
+              )
+              break
+            } else {
+              markers[i].setIcon(
+                'https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=44&hoffset=0&voffset=-1&background=E86566',
+              )
+            }
+          }
+        }
 
         // Create info window
 
@@ -124,18 +149,16 @@ const Map = () => {
     })
   })
 
-  // Change to custom marker (yellow with star icon) if category is selected by checkbox click
+  // Store all checked categories in the state "checkedCategories"
 
   const handleCheck = (e: any) => {
-    for (var i = 0; i < sellers.length; i++) {
-      if (sellers[i].categories.includes(e.target.id)) {
-        if (e.target.checked) {
-          markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-star&size=44&hoffset=0&voffset=-1&background=FFAA00')
-        } else {
-          markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=44&hoffset=0&voffset=-1&background=E86566')
-        }
-      }
+    let updatedArray = [...checkedCategories]
+    if (e.target.checked) {
+      updatedArray = [...checkedCategories, e.target.value]
+    } else {
+      updatedArray.splice(checkedCategories.indexOf(e.target.value), 1)
     }
+    setCheckedCategories(updatedArray)
   }
 
   return (
@@ -158,9 +181,7 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Damskor">
-              {' '}
               <input
                 id="Damskor"
                 name="Damskor"
@@ -174,7 +195,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Herrkläder">
               <input
                 id="Herrkläder"
@@ -189,7 +209,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Herrskor">
               <input
                 id="Herrskor"
@@ -204,7 +223,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Barnkläder">
               <input
                 id="Barnkläder"
@@ -219,7 +237,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Barnskor">
               <input
                 id="Barnskor"
@@ -234,7 +251,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Leksaker">
               <input
                 id="Leksaker"
@@ -249,7 +265,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Inredning">
               <input
                 id="Inredning"
@@ -263,7 +278,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Möbler">
               <input
                 id="Möbler"
@@ -277,7 +291,19 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
+            <label htmlFor="Verktyg">
+              <input
+                id="Verktyg"
+                name="Verktyg"
+                type="checkbox"
+                value="Verktyg"
+                onChange={handleCheck}
+              />
+              Verktyg
+            </label>
+          </div>
+
+          <div>
             <label htmlFor="Kaffe/Fika">
               <input
                 id="Kaffe/Fika"
@@ -291,7 +317,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Övriga barnartiklar">
               <input
                 id="Övriga barnartiklar"
