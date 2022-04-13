@@ -1,46 +1,36 @@
-import { useContext, useState } from "react";
-import { db } from "../firebase";
-import {
-  collection,
-  deleteDoc,
-  query,
-  where,
-  getDocs,
-} from "firebase/firestore";
-import { SellerContext } from "../context/SellerContext";
+import { useContext, useState } from 'react'
+import { db } from '../firebase'
+import { collection, deleteDoc, query, where, getDocs } from 'firebase/firestore'
+import { SellerContext } from '../context/SellerContext'
 
 const RemoveSeller = () => {
-  const { activeSeller, setActiveSeller } = useContext<any>(SellerContext);
+  const { activeSeller, setActiveSeller } = useContext<any>(SellerContext)
 
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false)
 
   // Remove seller from map (and delete data from database) if they click the "remove me as seller"-button
 
   const removeConfirmed = async () => {
-    const sellersRef = collection(db, "sellers");
+    const sellersRef = collection(db, 'sellers')
 
-    const q: any = query(
-      sellersRef,
-      where("email", "==", "gabrielle.kamph@gmail.com")
-    );
+    const q: any = query(sellersRef, where('email', '==', 'gabrielle.kamph@gmail.com'))
 
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = await getDocs(q)
 
     querySnapshot.forEach((doc: any) => {
-      console.log(doc.id, " => ", doc.data());
-      deleteDoc(doc.ref);
-    });
+      console.log(doc.id, ' => ', doc.data())
+      deleteDoc(doc.ref)
+    })
 
-    localStorage.removeItem("activeSeller");
-    setActiveSeller(false);
-  };
+    localStorage.removeItem('activeSeller')
+    setActiveSeller(false)
+  }
 
   return (
     <div className="w-full mt-4">
       <button
-          className="px-3 py-2 rounded-lg bg-darkmain hover:bg-lightmain mr-1 mb-1 transition-all duration-100"
-          onClick={() => setShowModal(!showModal)}
-      >
+        className="px-3 py-2 rounded-lg bg-darkmain hover:bg-lightmain mr-1 mb-1 transition-all duration-100"
+        onClick={() => setShowModal(!showModal)}>
         Ta bort dig som säljare
       </button>
 
@@ -55,15 +45,13 @@ const RemoveSeller = () => {
                 <button
                   className="px-3 py-2 rounded-lg bg-lightgray hover:scale-105"
                   type="button"
-                  onClick={() => setShowModal(false)}
-                >
+                  onClick={() => setShowModal(false)}>
                   Avbryt
                 </button>
                 <button
-                  className="text-white px-3 py-2 rounded-lg bg-main hover:scale-105"                  
+                  className="text-white px-3 py-2 rounded-lg bg-main hover:scale-105"
                   type="button"
-                  onClick={removeConfirmed}
-                >
+                  onClick={removeConfirmed}>
                   Ja, ta bort mig!
                 </button>
               </div>
