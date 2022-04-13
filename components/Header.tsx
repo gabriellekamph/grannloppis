@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { ArrowNarrowLeftIcon } from '@heroicons/react/solid'
 import { useRouter } from 'next/router'
 import LoginBtn from './LoginBtn'
 import LogoutBtn from './LogoutBtn'
