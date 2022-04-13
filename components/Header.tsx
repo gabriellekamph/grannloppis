@@ -8,6 +8,7 @@ import { AuthContext } from '../context/AuthProvider'
 import { signOut } from 'firebase/auth'
 import { SellerContext } from '../context/SellerContext'
 import { UserIcon } from '@heroicons/react/solid'
+import Image from 'next/image'
 
 const Header = () => {
   const router = useRouter()
@@ -38,7 +39,7 @@ const Header = () => {
         <div className="container flex justify-between items-center mb-10">
           <Link href="/">
             <a>
-              <img src="/logos/logo.png" alt="Grannloppis small logotype" width="80" className="cursor-pointer transition duration-200 hover:scale-105" />
+              <Image src="/logos/logo.png" alt="Grannloppis small logotype" width={80} height={50} className="cursor-pointer transition duration-200 hover:scale-105" />
             </a>
           </Link>
           {loadingAuthState ? null : <div>{user ? <LogoutBtn /> : <LoginBtn />}</div>}
