@@ -165,7 +165,7 @@ const Map = () => {
     <>
       <fieldset className="container flex flex-col mt-4 w-full lg:w-3/4 pl-4">
         <legend className="font-bold m-2">Visa hushåll som säljer:</legend>
-        <form className="flex flex-wrap gap-x-3 gap-y-2">
+        <form className="flex flex-wrap gap-x-2 gap-y-2">
           <div>
             <label htmlFor="Damkläder">
               <input
@@ -265,6 +265,20 @@ const Map = () => {
           </div>
 
           <div>
+            <label htmlFor="Övriga barnartiklar">
+              <input
+                id="Övriga barnartiklar"
+                name="Övriga barnartiklar"
+                type="checkbox"
+                value="Övriga barnartiklar"
+                defaultChecked={isChecked}
+                onChange={handleCheck}
+              />
+              Övriga barnartiklar
+            </label>
+          </div>
+
+          <div>
             <label htmlFor="Inredning">
               <input
                 id="Inredning"
@@ -313,20 +327,6 @@ const Map = () => {
                 onChange={handleCheck}
               />
               Kaffe/Fika
-            </label>
-          </div>
-
-          <div>
-            <label htmlFor="Övriga barnartiklar">
-              <input
-                id="Övriga barnartiklar"
-                name="Övriga barnartiklar"
-                type="checkbox"
-                value="Övriga barnartiklar"
-                defaultChecked={isChecked}
-                onChange={handleCheck}
-              />
-              Övriga barnartiklar
             </label>
           </div>
         </form>
