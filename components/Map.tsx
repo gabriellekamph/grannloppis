@@ -87,6 +87,8 @@ const Map = () => {
 
         markers.push(marker)
 
+        // Change color on marker from pink to yellow if checked category matches sellers category
+
         let isSellerInCheckedCategories: boolean = false
 
         for (let j = 0; j < sellers[i].categories.length; j++) {
@@ -147,49 +149,7 @@ const Map = () => {
     })
   })
 
-  useEffect(() => {
-    for (let i = 0; i < sellers.length; i++) {
-      let isSellerInCheckedCategories: boolean = false
-
-      for (let j = 0; j < sellers[i].categories.length; j++) {
-        if (checkedCategories.includes(sellers[i].categories[j])) {
-          console.log('SKA FÄRGAS GUL -->', sellers[i].address)
-
-          isSellerInCheckedCategories = true
-          // console.log("markers array includes: ", markers)
-
-          if (isSellerInCheckedCategories == true) {
-            markers[i].setIcon(
-              'https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-star&size=44&hoffset=0&voffset=-1&background=FFAA00',
-            )
-            console.log('GUL')
-            break
-          } else {
-            markers[i].setIcon(
-              'https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=44&hoffset=0&voffset=-1&background=E86566',
-            )
-            console.log('ROSA')
-          }
-        }
-      }
-    }
-  }, [checkedCategories])
-
-  // // Change to custom marker (yellow with star icon) if category is selected by checkbox click
-
-  // const handleCheck = (e: any) => {
-  //   for (var i = 0; i < sellers.length; i++) {
-  //     if (sellers[i].categories.includes(e.target.id)) {
-  //       if (e.target.checked) {
-  //         markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-star&size=44&hoffset=0&voffset=-1&background=FFAA00')
-  //       } else {
-  //         markers[i].setIcon('https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=44&hoffset=0&voffset=-1&background=E86566')
-  //       }
-  //     }
-  //   }
-  // }
-
-  // Store all checked categories in state checkedCategories
+  // Store all checked categories in the state "checkedCategories"
 
   const handleCheck = (e: any) => {
     let updatedArray = [...checkedCategories]
@@ -199,7 +159,6 @@ const Map = () => {
       updatedArray.splice(checkedCategories.indexOf(e.target.value), 1)
     }
     setCheckedCategories(updatedArray)
-    console.log(updatedArray)
   }
 
   return (
@@ -222,9 +181,7 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Damskor">
-              {' '}
               <input
                 id="Damskor"
                 name="Damskor"
@@ -238,7 +195,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Herrkläder">
               <input
                 id="Herrkläder"
@@ -253,7 +209,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Herrskor">
               <input
                 id="Herrskor"
@@ -268,7 +223,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Barnkläder">
               <input
                 id="Barnkläder"
@@ -283,7 +237,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Barnskor">
               <input
                 id="Barnskor"
@@ -298,7 +251,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Leksaker">
               <input
                 id="Leksaker"
@@ -313,7 +265,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Inredning">
               <input
                 id="Inredning"
@@ -327,7 +278,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Möbler">
               <input
                 id="Möbler"
@@ -341,7 +291,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Verktyg">
               <input
                 id="Verktyg"
@@ -355,7 +304,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Kaffe/Fika">
               <input
                 id="Kaffe/Fika"
@@ -369,7 +317,6 @@ const Map = () => {
           </div>
 
           <div>
-            {' '}
             <label htmlFor="Övriga barnartiklar">
               <input
                 id="Övriga barnartiklar"
