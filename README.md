@@ -18,3 +18,7 @@ npm run dev
 ```
 
 Then open [http://localhost:3000](http://localhost:3000) with your browser.
+
+### Testing
+
+You can log in using your own email (an email link will be sent for validation - no passwords required) and use any of Krusboda Torg 1-5 as example address to register yourself as a seller on the map.

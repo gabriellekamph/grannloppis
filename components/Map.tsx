@@ -44,7 +44,6 @@ const Map = () => {
   }
 
   useEffect(() => {
-    
     // Load Google Maps
 
     const loader = new Loader({
