@@ -34,7 +34,6 @@ const AddSeller = () => {
       timestamp: serverTimestamp(),
     })
     setShowModal(false)
-    console.log('Data sent to database')
     localStorage.setItem('activeSeller', 'yes')
     setActiveSeller(true)
   }
@@ -47,7 +46,6 @@ const AddSeller = () => {
       updatedArray.splice(categories.indexOf(e.target.value), 1)
     }
     setCategories(updatedArray)
-    console.log(updatedArray)
   }
 
   const handleChange = (address: any) => {
@@ -57,7 +55,6 @@ const AddSeller = () => {
     geocodeByAddress(selectedAddress)
       .then((results) => getLatLng(results[0]))
       .then(({ lat, lng }) => {
-        console.log('Successfully got latitude and longitude', { lat, lng })
         setlocation({ lat: Number(lat), lng: Number(lng) })
       })
   }

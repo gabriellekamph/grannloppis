@@ -1,16 +1,13 @@
 import React, { useState, useRef } from 'react'
-import { useRouter } from 'next/router'
 import { sendSignInLinkToEmail } from 'firebase/auth'
 import { auth } from '../firebase'
 import Emoji from './Emoji'
 
 const LoginBtn = () => {
-  const router = useRouter()
-  const { area } = router.query
 
-  const [showModal, setShowModal] = useState(false)
-  const [email, setEmail] = useState<any>('')
-  const [submitted, setSubmitted] = useState(false)
+  const [showModal, setShowModal] = useState<boolean>(false)
+  const [email, setEmail] = useState<string>('')
+  const [submitted, setSubmitted] = useState<boolean>(false)
 
   const emailRef = useRef<any>(null)
 
@@ -19,7 +16,6 @@ const LoginBtn = () => {
     const email: any = emailRef.current.value
     const actionCodeSettings = {
       url: window.location.href,
-      // url: `https://grannloppis.vercel.com/${area}/login/`,
       handleCodeInApp: true,
     }
 
@@ -37,7 +33,7 @@ const LoginBtn = () => {
         }
       })
       .catch((err) => {
-        console.log(err)
+        
       })
   }
 

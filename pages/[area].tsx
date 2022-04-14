@@ -30,10 +30,10 @@ const Area = () => {
 
       signInWithEmailLink(auth, email, window.location.href)
         .then((result) => {
-          console.log(result)
+          
         })
         .catch((error) => {
-          console.log(error)
+          
         })
     }
   }
