@@ -3,15 +3,19 @@ import { Loader } from '@googlemaps/js-api-loader'
 import { collection, query, onSnapshot } from 'firebase/firestore'
 import { db } from '../firebase'
 
+// Global variables that contains all markers on the map and all checked categories from the filter function
+
 let markers: any = []
+let checkedCategories: any = []
 
 const Map = () => {
-  const [sellers, setSellers] = useState<any>([])
 
+  const [sellers, setSellers] = useState<any>([])
   const [isChecked, setIsChecked] = useState<boolean>(false)
-  const [checkedCategories, setCheckedCategories] = useState<any>('')
 
   const googleMap: any = useRef(null)
+
+  // Hide Google Maps default pins
 
   const hidePois = [
     {
@@ -24,11 +28,11 @@ const Map = () => {
     },
   ]
 
+  // Fetch data from firebase and store in sellers state
+
   useEffect(() => {
     fetchSellers()
   }, [])
-
-  // Fetch data from firebase and store in sellers state
 
   const fetchSellers = async () => {
     const q = await query(collection(db, 'sellers'))
@@ -43,9 +47,9 @@ const Map = () => {
     })
   }
 
+      // Load Google Maps using js-api-loader
+
   useEffect(() => {
-    
-    // Load Google Maps
 
     const loader = new Loader({
       apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
@@ -87,28 +91,6 @@ const Map = () => {
         })
 
         markers.push(marker)
-
-        // Change color on marker from pink to yellow if checked category matches sellers category
-
-        let isSellerInCheckedCategories: boolean = false
-
-        for (let j = 0; j < sellers[i].categories.length; j++) {
-          if (checkedCategories.includes(sellers[i].categories[j])) {
-
-            isSellerInCheckedCategories = true
-
-            if (isSellerInCheckedCategories == true) {
-              markers[i].setIcon(
-                'https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-star&size=44&hoffset=0&voffset=-1&background=FFAA00',
-              )
-              break
-            } else {
-              markers[i].setIcon(
-                'https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=44&hoffset=0&voffset=-1&background=E86566',
-              )
-            }
-          }
-        }
 
         // Create info window
 
@@ -159,7 +141,34 @@ const Map = () => {
     } else {
       updatedArray.splice(checkedCategories.indexOf(e.target.value), 1)
     }
-    setCheckedCategories(updatedArray)
+    checkedCategories = updatedArray
+    toggleMarkers()
+  }
+
+  // Change color on marker from pink to yellow if checked category matches sellers category
+
+  const toggleMarkers = () => {
+    for (let i = 0; i < sellers.length; i++) {
+      const seller = sellers[i]
+      let isSellerInCheckedCategories: boolean = false
+
+      for (let j = 0; j < sellers[i].categories.length; j++) {
+        if (checkedCategories.includes(sellers[i].categories[j])) {
+          isSellerInCheckedCategories = true
+          break
+        }
+      }
+
+      if (isSellerInCheckedCategories == true) {
+        markers[i].setIcon(
+          'https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-star&size=44&hoffset=0&voffset=-1&background=FFAA00',
+        )
+      } else {
+        markers[i].setIcon(
+          'https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-circle&size=44&hoffset=0&voffset=-1&background=E86566',
+        )
+      }
+    }
   }
 
   return (
