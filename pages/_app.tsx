@@ -6,7 +6,7 @@ import { SellerContext } from '../context/SellerContext'
 import { useState } from 'react'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [activeSeller, setActiveSeller] = useState(false)
+  const [activeSeller, setActiveSeller] = useState<boolean>(false)
 
   return (
     <>

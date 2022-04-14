@@ -1,10 +1,21 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { db } from '../firebase'
 import { collection, deleteDoc, query, where, getDocs } from 'firebase/firestore'
 import { SellerContext } from '../context/SellerContext'
 
 const RemoveSeller = () => {
+  
   const { activeSeller, setActiveSeller } = useContext<any>(SellerContext)
+  const [currentUser, setCurrentUser] = useState<string>('')
+
+  useEffect(() => {
+
+    // Get email for current user from local storage
+
+    const getCurrentUser: any = localStorage.getItem('emailForSignIn')
+    setCurrentUser(getCurrentUser)
+
+  }, [])
 
   const [showModal, setShowModal] = useState<boolean>(false)
 
@@ -13,12 +24,11 @@ const RemoveSeller = () => {
   const removeConfirmed = async () => {
     const sellersRef = collection(db, 'sellers')
 
-    const q: any = query(sellersRef, where('email', '==', 'gabrielle.kamph@gmail.com'))
+    const q: any = query(sellersRef, where('email', '==', currentUser))
 
     const querySnapshot = await getDocs(q)
 
     querySnapshot.forEach((doc: any) => {
-      console.log(doc.id, ' => ', doc.data())
       deleteDoc(doc.ref)
     })
 

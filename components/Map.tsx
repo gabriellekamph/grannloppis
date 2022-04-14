@@ -47,7 +47,7 @@ const Map = () => {
     })
   }
 
-      // Load Google Maps using js-api-loader
+  // Load Google Maps using js-api-loader
 
   useEffect(() => {
 

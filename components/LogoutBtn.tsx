@@ -8,7 +8,6 @@ const LogoutBtn = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
 
   const logoutConfirmed = () => {
-    console.log('log out')
     signOut(auth)
   }
 
