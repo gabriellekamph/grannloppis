@@ -9,7 +9,7 @@ You can easily add (and remove) yourself as a seller to the map after login (usi
 
 ### Technologies
 
-This project is built Next.js and Typescript, with Tailwind CSS for styling and Firebase as database.
+This project is built with Next.js and Typescript, with Tailwind CSS for styling and Firebase as database (and for login authentication).
 
 ### Getting started
 
