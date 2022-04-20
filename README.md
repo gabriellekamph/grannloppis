@@ -4,6 +4,8 @@ Grannloppis is a tool to easily overview and participate in local flea markets w
 
 You can easily add (and remove) yourself as a seller to the map after login (using Firebase Email Link Authentication, so no passwords needed!)
 
+![Grannloppis mobile mockup image](img/my-mobile-mockup.png)
+
 ### Technologies
 
 This project is built Next.js and Typescript, with Tailwind CSS for styling and Firebase as database.
