@@ -4,7 +4,7 @@ Grannloppis is a tool to easily overview and participate in local flea markets w
 
 You can easily add (and remove) yourself as a seller to the map after login (using Firebase Email Link Authentication, so no passwords needed!)
 
-![Grannloppis mobile mockup image](public/img/my-mobile-mockup.png)
+![Grannloppis mobile mockup image](https://github.com/gabriellekamph/grannloppis/blob/main/public/img/mobile-mockup.png)
 
 ### Technologies
 
